@@ -206,6 +206,19 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:2rem;margin:0 0 .35r
 .lb button{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;width:2.8rem;height:2.8rem;font-size:1.5rem;line-height:1;cursor:pointer;flex:none}
 .lb button:hover{background:rgba(255,255,255,.18)}
 .lb-x{position:absolute;top:calc(.8rem + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font-size:1rem!important}
+/* comments */
+.talk{margin:2.5rem 0 2rem;padding:1.6rem 1.5rem;border:1px solid var(--rule);border-radius:6px;background:var(--paper-2);display:flex;flex-direction:column;gap:.7rem;scroll-margin-top:5rem}
+.talk h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0}
+.talk-intro{margin:0;color:var(--ink-soft)}
+.talk-note{margin:0;font-family:var(--ui);font-size:.82rem;color:var(--ink-soft)}
+#cusdis_thread{min-height:12rem}
+#cusdis_thread iframe{width:100%;border:0}
+.gb-band{background:var(--ink);color:var(--paper)}
+.gb-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.2rem;flex-wrap:wrap}
+.gb-band .sec-sub,.gb-band .eyebrow{color:color-mix(in srgb,var(--paper) 75%,transparent)}
+.gb-band .eyebrow{color:var(--turmeric)}
+.gb-band .btn.solid{background:var(--kumkum);border-color:var(--kumkum);color:#fff}
+.nav-gb{color:var(--kumkum)!important;font-weight:600!important}
 /* quotes */
 .quote{margin:0;display:flex;flex-direction:column;gap:.6rem}
 .qt{font-family:var(--display);font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.35;margin:0;text-wrap:balance}
@@ -264,6 +277,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
       <a href="#village" data-nav="village">Village</a>
       <a href="#quotes" data-nav="quotes">Quotes</a>
       <a href="#about" data-nav="about">About</a>
+      <a href="#guestbook" data-nav="guestbook" class="nav-gb">Guestbook</a>
       <button type="button" class="amb" id="amb" aria-pressed="false" title="Soft background music while you read"><i aria-hidden="true">♪</i><span>Music off</span></button>
     </nav>
   </div>
@@ -274,7 +288,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <address class="addr"><span>Chakicherla village, Ulavapadu Mandal</span><span>Prakasam District, Andhra Pradesh 523292, India</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292" target="_blank" rel="noopener">Open in Google Maps ↗</a></address>
-    <span><a href="https://namassumaanjali.blogspot.com">Namassumanjali blog</a> · <a href="https://www.youtube.com/@Gramavasee">YouTube</a></span>
+    <span><a href="https://namassumaanjali.blogspot.com">Namassumanjali blog</a> · <a href="https://www.youtube.com/@Gramavasee">YouTube</a> · <a href="#guestbook">Guestbook</a></span>
   </div>
 </footer>
 
@@ -512,6 +526,10 @@ const GALLERY = [
     ["haridasu-1","The Haridasu, singing door to door in Dhanurmasam","t"],["haridasu-2","The Haridasu on his rounds","t"],["bhogi-fire","Bhogi fire before dawn","t"],["bhogi-street","Bhogi fires down the street","t"],["bullock-cart","Bullock cart on the village road","t"],["cattle-dusk","Cattle coming home at dusk","t"],["puja-drawing","A ritual drawing in red and white","b"]]}
 ];
 
+/* Comments: Cusdis (cusdis.com). Paste the App ID from the Cusdis dashboard here. */
+const CUSDIS_APP_ID = "";
+const SITE_URL = "https://gramavaasi.github.io/";
+
 /* Chakicherla */
 const PLACE = {name:"Chakicherla", te:"చాకిచర్ల", lines:["Chakicherla village, Ulavapadu Mandal","Prakasam District, Andhra Pradesh 523292","India"], map:"https://www.google.com/maps/search/?api=1&query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292"};
 
@@ -633,6 +651,10 @@ function home(){
     </a>
     ${chantCards()}
   </div></section>
+  <section class="gb-band"><div class="wrap">
+    <div><p class="eyebrow">Guestbook</p><h2 class="sec">Write to me</h2><p class="sec-sub" style="margin:0">Share a memory, a correction or a blessing. No account needed.</p></div>
+    <a class="btn solid" href="#guestbook">💬 Leave a message</a>
+  </div></section>
   <section><div class="wrap">${ABOUT}</div></section>`;
 }
 
@@ -671,6 +693,27 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-ph]");if(t){lbShow(ALLPH.findIndex(p=>p.f===t.dataset.ph));return}
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const go=()=>{const el=document.getElementById("g-"+j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth"})};if(location.hash!=="#village"){location.hash="village";setTimeout(go,60)}else go()}
 });
+
+/* ---------- Comments ---------- */
+function commentsBlock(pageId, title, heading, intro){
+  const live = CUSDIS_APP_ID && location.protocol.startsWith("http") && !/claude|claudeusercontent/.test(location.host);
+  return `<section class="talk" id="talk" aria-labelledby="talk-h">
+    <h2 id="talk-h">${heading}</h2>
+    <p class="talk-intro">${intro}</p>
+    ${live?`<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="${CUSDIS_APP_ID}" data-page-id="${pageId}" data-page-url="${SITE_URL}#${pageId}" data-page-title="${esc(title)}" data-theme="auto" data-lang="en"></div>
+    <p class="talk-note">No account needed. Comments appear after Siva reads them, usually within a day.</p>`
+    :`<p class="talk-note">${CUSDIS_APP_ID?"Comments open on the live site, gramavaasi.github.io.":"Comments are opening very soon."}</p>`}
+  </section>`;
+}
+let cusdisLoading=false;
+function mountComments(){
+  if(!document.getElementById("cusdis_thread"))return;
+  if(window.CUSDIS&&window.CUSDIS.initial){window.CUSDIS.initial();return}
+  if(cusdisLoading)return;cusdisLoading=true;
+  const sc=document.createElement("script");sc.src="https://cusdis.com/js/cusdis.es.js";sc.async=true;sc.defer=true;
+  sc.onload=()=>{cusdisLoading=false;if(window.CUSDIS&&window.CUSDIS.initial)window.CUSDIS.initial()};
+  document.head.appendChild(sc);
+}
 
 /* ---------- Chant player ---------- */
 const SCRIPTS=[["te","తెలుగు"],["dev","देवनागरी"],["kn","ಕನ್ನಡ"],["en","English"]];
@@ -784,9 +827,10 @@ function reader(s){
     <p class="eyebrow">${s.tag}</p>
     <h1>${esc(s.title)}</h1>
     ${s.te?`<p class="te-title" lang="te">${s.te}</p>`:""}
-    <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>Original: ${s.orig}</span><a href="${s.src}" target="_blank" rel="noopener">Read the original post ↗</a></div>
+    <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>Original: ${s.orig}</span><a href="${s.src}" target="_blank" rel="noopener">Read the original post ↗</a><a href="#talk" data-scroll="talk">💬 Leave a comment</a></div>
     <div class="prose">${withPhotos(render(s.body), PHOTOS[s.slug])}</div>
     <p class="endmark" aria-hidden="true">॥ ఓం ॥</p>
+    ${commentsBlock(s.slug, s.title, "Your thoughts", "Did this bring back a memory, or do you know the people in it? Write a few words below.")}
     <nav class="nextprev" aria-label="More stories">
       ${older?`<a href="#${older.slug}">Older<b>${esc(older.title)}</b></a>`:"<span></span>"}
       ${newer?`<a href="#${newer.slug}">Newer<b>${esc(newer.title)}</b></a>`:"<span></span>"}
@@ -803,11 +847,18 @@ function route(){
   else if(h==="chants"){ app.innerHTML=`<section class="stage-sec"><div class="wrap">${playerHTML()}</div></section><section><div class="wrap"><h2 class="sec">More chants</h2><p class="sec-sub">I learned these by ear, at my grandfather's Saturday pujas and in the temple beside our house. These recordings are on YouTube.</p>${chantCards()}</div></section>`; initPlayer(); }
   else if(h==="village") app.innerHTML=villagePage();
   else if(h==="quotes") app.innerHTML=`<section><div class="wrap"><h2 class="sec">Quotes</h2><p class="sec-sub">Lines from these stories, and the verses they lean on. A new one opens the home page each day.</p><div class="quotes">${QUOTES.map(quoteCard).join("")}</div></div></section>`;
+  else if(h==="guestbook") app.innerHTML=`<section><div class="wrap"><div class="reader" style="padding-block:0">
+    <p class="eyebrow">Guestbook</p><h1>Write to me</h1>
+    <p class="sec-sub">A memory of Chakicherla, a correction to a story, a chant you'd like to hear, or just a namaskaram. Everything you write here is read.</p>
+    ${commentsBlock("guestbook","Guestbook","Leave a message","Add your name and a few words. Telugu or English, either is welcome.")}
+  </div></div></section>`;
   else if(h==="about") app.innerHTML=`<section><div class="wrap">${ABOUT}</div></section>`;
   else {app.innerHTML=home();nav="home";drawKolam();}
   document.querySelectorAll("[data-nav]").forEach(a=>{ if(a.dataset.nav===nav) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   if(!["home",""].includes(h)) window.scrollTo(0,0);
+  mountComments();
 }
+document.addEventListener("click",e=>{const a=e.target.closest("[data-scroll]");if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.scroll);if(el)el.scrollIntoView({behavior:"smooth"})});
 app.addEventListener("click",e=>{
   const b=e.target.closest("[data-f]"); if(!b) return;
   filter=b.dataset.f; app.innerHTML=storiesPage();
