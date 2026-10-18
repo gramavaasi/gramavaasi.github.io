@@ -22,7 +22,7 @@
   --turmeric:#B87A06;    /* pasupu */
   --kumkum:#A0262C;      /* kumkuma */
   --display:"Tiro Telugu","Literata",Georgia,serif;
-  --body:"Literata",Georgia,"Times New Roman",serif;
+  --body:"Literata","Tiro Telugu","Tiro Devanagari Sanskrit","Noto Serif Kannada",Georgia,"Times New Roman",serif;
   --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --te:"Tiro Telugu","Noto Sans Telugu",serif;
 }
@@ -543,6 +543,10 @@ const GB = {
   csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQpC4wNrc8uC8PX9cm5crNtGCWsvvtucT0mVEjKkyULROhwZdfnocxJ1RCXs8CuQJHAkgzAJx7dtzPR/pub?gid=288915939&single=true&output=csv"
 };
 
+/* Private visitor counter: page views go to Siva's "Gramavasi Visitors" sheet, never shown on the site.
+   Open the site once with ?notrack to stop counting your own visits in that browser. */
+const VISITS = { form:"https://docs.google.com/forms/d/e/1FAIpQLScX3kncodPbxpgktOEdp_TeJbCDgYXjkg9A44VeSTi6lVRjXA/formResponse", page:"entry.955277691", vis:"entry.310016487", from:"entry.918879691" };
+
 /* Chakicherla */
 const PLACE = {name:"Chakicherla", te:"చాకిచర్ల", lines:["Chakicherla village, Ulavapadu Mandal","Prakasam District, Andhra Pradesh 523292","India"], map:"https://www.google.com/maps/search/?api=1&query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292"};
 
@@ -665,7 +669,7 @@ function home(){
     ${chantCards()}
   </div></section>
   <section class="gb-band"><div class="wrap">
-    <div><p class="eyebrow">Guestbook</p><h2 class="sec">Write to me</h2><p class="sec-sub" style="margin:0">Share a memory, a correction or a blessing. No account needed.</p></div>
+    <div><p class="eyebrow">Guestbook</p><h2 class="sec">Write to me</h2><p class="sec-sub" style="margin:0">Share a memory, a correction or a blessing, in తెలుగు, हिन्दी, ಕನ್ನಡ or English. No account needed.</p></div>
     <a class="btn solid" href="#guestbook">💬 Leave a message</a>
   </div></section>
   <section><div class="wrap">${ABOUT}</div></section>`;
@@ -707,6 +711,23 @@ document.addEventListener("click",e=>{
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const go=()=>{const el=document.getElementById("g-"+j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth"})};if(location.hash!=="#village"){location.hash="village";setTimeout(go,60)}else go()}
 });
 
+/* ---------- Visitor counter ---------- */
+const seenPages=new Set();
+function countVisit(page){
+  try{
+    if(window.EMB||!location.protocol.startsWith("http")||/localhost|127\.0\.0\.1/.test(location.host))return;
+    if(/[?&]notrack/.test(location.search))localStorage.setItem("gv-notrack","1");
+    if(localStorage.getItem("gv-notrack"))return;
+    if(seenPages.has(page))return;seenPages.add(page);
+    const today=new Date().toISOString().slice(0,10);const isNew=localStorage.getItem("gv-day")!==today;
+    if(isNew)localStorage.setItem("gv-day",today);
+    let from="";try{if(isNew&&document.referrer){const h=new URL(document.referrer).hostname.replace(/^www\./,"");if(h!==location.hostname)from=h}}catch(e){}
+    if(isNew&&!from)from="direct";
+    const fd=new FormData();fd.append(VISITS.page,page);fd.append(VISITS.vis,isNew?"new":"returning");if(from)fd.append(VISITS.from,from);
+    fetch(VISITS.form,{method:"POST",mode:"no-cors",body:fd}).catch(()=>{});
+  }catch(e){}
+}
+
 /* ---------- Comments ---------- */
 const gbReady = () => GB.form && GB.name && GB.msg;
 function commentsBlock(pageId, title, heading, intro){
@@ -718,7 +739,7 @@ function commentsBlock(pageId, title, heading, intro){
       <label for="c-name">Your name</label>
       <input id="c-name" name="name" required maxlength="80" autocomplete="name" placeholder="e.g. Tulasi, Ongole">
       <label for="c-msg">Your message</label>
-      <textarea id="c-msg" name="msg" required maxlength="2000" rows="4" placeholder="Telugu or English, either is welcome"></textarea>
+      <textarea id="c-msg" name="msg" required maxlength="2000" rows="4" placeholder="Telugu, Hindi, Kannada or English"></textarea>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="talk-row"><button type="submit" class="btn solid">Send</button><span class="talk-status" role="status"></span></div>
       <p class="talk-note">No account needed. Messages appear here after Siva reads them.</p>
@@ -864,7 +885,7 @@ function reader(s){
     <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>Original: ${s.orig}</span><a href="${s.src}" target="_blank" rel="noopener">Read the original post ↗</a><a href="#talk" data-scroll="talk">💬 Leave a comment</a></div>
     <div class="prose">${withPhotos(render(s.body), PHOTOS[s.slug])}</div>
     <p class="endmark" aria-hidden="true">॥ ఓం ॥</p>
-    ${commentsBlock(s.slug, s.title, "Your thoughts", "Did this bring back a memory, or do you know the people in it? Write a few words below.")}
+    ${commentsBlock(s.slug, s.title, "Your thoughts", "Did this bring back a memory, or do you know the people in it? Write a few words below, in Telugu, Hindi, Kannada or English.")}
     <nav class="nextprev" aria-label="More stories">
       ${older?`<a href="#${older.slug}">Older<b>${esc(older.title)}</b></a>`:"<span></span>"}
       ${newer?`<a href="#${newer.slug}">Newer<b>${esc(newer.title)}</b></a>`:"<span></span>"}
@@ -884,13 +905,14 @@ function route(){
   else if(h==="guestbook") app.innerHTML=`<section><div class="wrap"><div class="reader" style="padding-block:0">
     <p class="eyebrow">Guestbook</p><h1>Write to me</h1>
     <p class="sec-sub">A memory of Chakicherla, a correction to a story, a chant you'd like to hear, or just a namaskaram. Everything you write here is read.</p>
-    ${commentsBlock("guestbook","Guestbook","Leave a message","Add your name and a few words. Telugu or English, either is welcome.")}
+    ${commentsBlock("guestbook","Guestbook","Leave a message","Add your name and a few words. Write in Telugu, Hindi, Kannada or English, whichever feels natural.")}
   </div></div></section>`;
   else if(h==="about") app.innerHTML=`<section><div class="wrap">${ABOUT}</div></section>`;
   else {app.innerHTML=home();nav="home";drawKolam();}
   document.querySelectorAll("[data-nav]").forEach(a=>{ if(a.dataset.nav===nav) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
   if(!["home",""].includes(h)) window.scrollTo(0,0);
   mountComments();
+  countVisit(story?story.slug:(h||"home"));
 }
 document.addEventListener("click",e=>{const a=e.target.closest("[data-scroll]");if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.scroll);if(el)el.scrollIntoView({behavior:"smooth"})});
 app.addEventListener("click",e=>{
