@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Stories, Vedic chants and village life from coastal Andhra Pradesh, by Sivaramakrishna Perubotla (Gramavasi).">
+<meta property="og:title" content="Gramavasi">
+<meta property="og:description" content="Stories of the people who carried me, the chants my grandfather gave me, and the village I come from.">
+<meta property="og:image" content="img/guru-3.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Gramavasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Telugu:ital@0;1&family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Kannada&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a village notebook. Kolam-dot masthead, one reading column (~64ch), quiet index of stories by year. */
+:root{
+  --paper:#F2F4EE;       /* morning light on whitewashed wall, slight green */
+  --paper-2:#E6EBE1;
+  --ink:#16302D;         /* deep backwater teal */
+  --ink-soft:#4C625E;
+  --rule:#C9D3C6;
+  --turmeric:#B87A06;    /* pasupu */
+  --kumkum:#A0262C;      /* kumkuma */
+  --display:"Tiro Telugu","Literata",Georgia,serif;
+  --body:"Literata",Georgia,"Times New Roman",serif;
+  --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --te:"Tiro Telugu","Noto Sans Telugu",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F1B1A;--paper-2:#172726;--ink:#E3EAE3;--ink-soft:#A3B5AF;--rule:#2B3F3C;--turmeric:#E3A93A;--kumkum:#E0676B;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0F1B1A;--paper-2:#172726;--ink:#E3EAE3;--ink-soft:#A3B5AF;--rule:#2B3F3C;--turmeric:#E3A93A;--kumkum:#E0676B;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit;text-decoration-color:var(--turmeric);text-underline-offset:3px}
+a:hover{color:var(--kumkum)}
+:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px;border-radius:2px}
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+header.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:.6rem;text-decoration:none}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.01em}
+.brand span{font-family:var(--te);color:var(--turmeric);font-size:1rem}
+nav{display:flex;gap:.25rem;flex-wrap:wrap}
+nav a{font-family:var(--ui);font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.4rem .65rem;border-radius:3px;color:var(--ink-soft)}
+nav a[aria-current="page"]{color:var(--ink);background:var(--paper-2)}
+
+/* hero */
+.hero{border-bottom:1px solid var(--rule)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:2.5rem;align-items:center;padding-block:3.5rem 3rem}
+.eyebrow{font-family:var(--ui);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--turmeric);font-weight:600;margin:0 0 .9rem}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.08;margin:0 0 1.1rem;text-wrap:balance}
+.hero h1 em{font-style:italic;color:var(--kumkum)}
+.hero p.lede{font-size:1.15rem;max-width:34rem;margin:0 0 1.5rem;color:var(--ink-soft)}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{font-family:var(--ui);font-size:.9rem;font-weight:600;text-decoration:none;padding:.7rem 1.1rem;border-radius:3px;border:1px solid var(--ink);display:inline-flex;gap:.4rem;align-items:center}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--kumkum);border-color:var(--kumkum);color:var(--paper)}
+.kolam{width:100%;max-width:100%;aspect-ratio:1/1;display:block}
+.kolam-cap{font-family:var(--ui);font-size:.75rem;color:var(--ink-soft);text-align:center;margin-top:.4rem}
+
+section{padding-block:3rem}
+h2.sec{font-family:var(--display);font-weight:400;font-size:2rem;margin:0 0 .35rem;text-wrap:balance}
+.sec-sub{color:var(--ink-soft);margin:0 0 2rem;max-width:40rem}
+
+/* story index */
+.index{display:grid;gap:0;border-top:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:5.5rem minmax(0,1fr) auto;gap:1.25rem;align-items:baseline;padding:1.15rem 0;border-bottom:1px solid var(--rule);text-decoration:none}
+.row:hover h3{color:var(--kumkum)}
+.row time{font-family:var(--ui);font-size:.8rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.row h3{font-family:var(--display);font-weight:400;font-size:1.35rem;line-height:1.25;margin:0 0 .25rem}
+.row h3 .te{font-family:var(--te);color:var(--turmeric);font-size:1rem;margin-left:.4rem}
+.row p{margin:0;color:var(--ink-soft);font-size:.98rem;max-width:44rem}
+.tag{font-family:var(--ui);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);border:1px solid var(--rule);padding:.15rem .5rem;border-radius:999px;white-space:nowrap}
+.filters{display:flex;gap:.4rem;flex-wrap:wrap;margin:0 0 1.25rem}
+.filters button{font-family:var(--ui);font-size:.8rem;font-weight:500;background:transparent;color:var(--ink-soft);border:1px solid var(--rule);padding:.35rem .8rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* chants */
+.chants{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.chant{display:flex;flex-direction:column;gap:.5rem;padding:1.25rem;border:1px solid var(--rule);border-radius:4px;background:var(--paper-2);text-decoration:none;min-width:0}
+.chant .om{font-family:var(--te);font-size:2rem;line-height:1;color:var(--turmeric)}
+.chant h3{font-family:var(--display);font-weight:400;font-size:1.25rem;margin:0}
+.chant p{margin:0;font-size:.95rem;color:var(--ink-soft)}
+.chant .go{font-family:var(--ui);font-size:.8rem;font-weight:600;margin-top:auto;color:var(--kumkum)}
+
+/* about strip */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:2.5rem;align-items:start}
+.about blockquote{margin:0;font-family:var(--display);font-size:1.5rem;line-height:1.35;border-left:3px solid var(--turmeric);padding-left:1.1rem;text-wrap:balance}
+.about p{margin:0 0 1rem;max-width:40rem}
+
+/* reader */
+.reader{max-width:42rem;margin:0 auto;padding-block:2.5rem 4rem}
+.back{font-family:var(--ui);font-size:.85rem;text-decoration:none;color:var(--ink-soft);display:inline-block;margin-bottom:1.5rem}
+.reader h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,2.9rem);line-height:1.12;margin:.2rem 0 .6rem;text-wrap:balance}
+.reader .te-title{font-family:var(--te);color:var(--turmeric);font-size:1.15rem;margin:0 0 1rem}
+.meta{font-family:var(--ui);font-size:.82rem;color:var(--ink-soft);display:flex;gap:.9rem;flex-wrap:wrap;padding-bottom:1.4rem;border-bottom:1px solid var(--rule);margin-bottom:1.8rem}
+.prose p{margin:0 0 1.15rem}
+.prose h4{font-family:var(--display);font-weight:400;font-size:1.35rem;margin:2rem 0 .6rem}
+.prose .verse{font-style:italic;border-left:3px solid var(--turmeric);padding:.2rem 0 .2rem 1rem;margin:0 0 1.4rem;color:var(--ink)}
+.prose ul{padding-left:1.2rem;margin:0 0 1.15rem}
+.prose li{margin:.2rem 0}
+.prose p:first-of-type::first-letter{font-family:var(--display);float:left;font-size:3.4rem;line-height:.9;padding:.35rem .5rem 0 0;color:var(--kumkum)}
+.prose p.verse::first-letter,.prose p.note::first-letter{all:unset}
+.note{font-family:var(--ui);font-size:.88rem;color:var(--ink-soft);background:var(--paper-2);padding:.9rem 1rem;border-radius:4px}
+.endmark{text-align:center;color:var(--turmeric);font-family:var(--te);font-size:1.4rem;margin:2.5rem 0 1rem}
+.nextprev{display:grid;grid-template-columns:1fr 1fr;gap:1rem;border-top:1px solid var(--rule);padding-top:1.2rem}
+.nextprev a{text-decoration:none;font-family:var(--ui);font-size:.85rem;color:var(--ink-soft);min-width:0}
+.nextprev a b{display:block;font-family:var(--display);font-weight:400;font-size:1.05rem;color:var(--ink)}
+.nextprev a:last-child{text-align:right}
+
+/* photos */
+.ph{margin:1.6rem 0;display:flex;flex-direction:column;gap:.5rem}
+.ph img{display:block;width:100%;max-height:72vh;object-fit:contain;background:var(--paper-2);border-radius:3px}
+.ph figcaption{font-family:var(--ui);font-size:.82rem;color:var(--ink-soft);text-align:center}
+.ph.small img{max-height:15rem}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.6rem 0}
+.pair .ph{margin:0;min-width:0}
+.about-l{display:flex;flex-direction:column;gap:1rem}
+.about-l .ph{margin:0}
+
+/* music toggle */
+.amb{font-family:var(--ui);font-size:.82rem;font-weight:500;display:inline-flex;gap:.35rem;align-items:center;background:transparent;color:var(--ink-soft);border:1px solid var(--rule);border-radius:999px;padding:.32rem .75rem;cursor:pointer;margin-left:.25rem}
+.amb i{font-style:normal;color:var(--turmeric)}
+.amb[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.amb[aria-pressed="true"] i{animation:sway 2.4s ease-in-out infinite}
+@keyframes sway{50%{transform:translateY(-2px)}}
+
+/* feature link on home */
+.feature{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1.1rem;align-items:center;padding:1.2rem 1.4rem;border:1px solid var(--ink);border-radius:4px;text-decoration:none;margin:0 0 1rem;background:var(--paper)}
+.feature .om{font-family:"Tiro Devanagari Sanskrit",var(--te);font-size:2.6rem;line-height:1;color:var(--kumkum)}
+.feature b{display:block;font-family:var(--display);font-weight:400;font-size:1.4rem}
+.feature span span{color:var(--ink-soft);font-size:.95rem}
+.feature .go{font-family:var(--ui);font-weight:600;font-size:.85rem;color:var(--kumkum);white-space:nowrap}
+
+/* chant player */
+.stage-sec{background:var(--paper-2)}
+.player{display:flex;flex-direction:column;gap:1.4rem}
+.pl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
+.scripts{display:flex;gap:.35rem;flex-wrap:wrap}
+.scripts button{font-family:var(--te);font-size:.95rem;background:var(--paper);color:var(--ink-soft);border:1px solid var(--rule);padding:.35rem .8rem;border-radius:999px;cursor:pointer}
+.scripts button[lang="sa"]{font-family:"Tiro Devanagari Sanskrit",var(--te)}
+.scripts button[lang="kn"]{font-family:"Noto Serif Kannada",serif}
+.scripts button[lang="en"]{font-family:var(--ui)}
+.scripts button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pl-body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.4rem;align-items:stretch}
+.now{background:var(--ink);color:var(--paper);border-radius:6px;padding:2rem 1.8rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;min-height:18rem;position:relative;overflow:hidden}
+.now::after{content:"";position:absolute;inset:auto -20% -60% -20%;height:80%;background:radial-gradient(closest-side,color-mix(in srgb,var(--turmeric) 35%,transparent),transparent);pointer-events:none}
+.cur{font-family:var(--te);font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.45;margin:0;text-wrap:balance;position:relative;z-index:1}
+.cur[lang="sa"]{font-family:"Tiro Devanagari Sanskrit",var(--te)}
+.cur[lang="en"]{font-family:var(--body);font-style:italic}
+.meaning{font-family:var(--body);font-size:1rem;margin:0;opacity:.8;position:relative;z-index:1}
+.lines{list-style:none;margin:0;padding:.6rem;max-height:18rem;overflow-y:auto;border:1px solid var(--rule);border-radius:6px;background:var(--paper);counter-reset:l}
+.lines li{font-family:var(--te);font-size:.98rem;padding:.35rem .6rem;border-radius:4px;cursor:pointer;color:var(--ink-soft);line-height:1.5}
+.lines li[lang="sa"]{font-family:"Tiro Devanagari Sanskrit",var(--te)}
+.lines li[lang="en"]{font-family:var(--body);font-style:italic}
+.lines li[lang="kn"],.cur[lang="kn"]{font-family:"Noto Serif Kannada",serif}
+.lines li:hover{background:var(--paper-2)}
+.lines li.on{background:var(--paper-2);color:var(--ink);box-shadow:inset 3px 0 0 var(--turmeric)}
+.pl-ctrl{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.playbtn{width:3.2rem;height:3.2rem;border-radius:50%;border:0;background:var(--kumkum);color:#fff;font-size:1.05rem;cursor:pointer;flex:none}
+.playbtn:hover{filter:brightness(1.1)}
+.time{font-family:var(--ui);font-size:.82rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+#seek{flex:1 1 12rem;min-width:0;accent-color:var(--kumkum)}
+.vol{display:flex;align-items:center;gap:.5rem;font-family:var(--ui);font-size:.82rem;color:var(--ink-soft)}
+.vol input{width:7rem;accent-color:var(--turmeric)}
+.pl-status{font-family:var(--ui);font-size:.8rem;color:var(--ink-soft);margin:0}
+
+/* home photo band */
+.band{background:var(--paper-2)}
+.band-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:12rem 12rem;gap:.6rem}
+.mosaic a{display:block;overflow:hidden;border-radius:4px;min-width:0}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.mosaic a:hover img{transform:scale(1.04)}
+.mosaic .m0{grid-row:span 2}
+/* village page */
+.v-intro .te{font-family:var(--te);color:var(--turmeric);font-size:1.3rem;margin-left:.4rem}
+.v-toc{display:flex;gap:.4rem;flex-wrap:wrap}
+.v-toc a{font-family:var(--ui);font-size:.82rem;font-weight:500;text-decoration:none;border:1px solid var(--rule);padding:.35rem .8rem;border-radius:999px;color:var(--ink-soft)}
+.v-toc a:hover{border-color:var(--ink);color:var(--ink)}
+.v-sec{scroll-margin-top:5rem}
+.v-sec.alt{background:var(--paper-2)}
+.v-head{display:flex;justify-content:space-between;align-items:baseline;gap:.4rem 2rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.v-head h3{font-family:var(--display);font-weight:400;font-size:1.7rem;margin:0}
+.v-head h3 span{font-family:var(--te);color:var(--turmeric);font-size:1.05rem;margin-left:.6rem}
+.v-head p{margin:0;color:var(--ink-soft);max-width:34rem}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:11rem;gap:.6rem}
+.tile{position:relative;padding:0;border:0;background:var(--rule);border-radius:4px;overflow:hidden;cursor:zoom-in;min-width:0}
+.tile.wide{grid-column:span 2}
+.tile.tall{grid-row:span 2}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.tile:hover img{transform:scale(1.04)}
+.tile span{position:absolute;inset:auto 0 0 0;padding:1.6rem .7rem .55rem;font-family:var(--ui);font-size:.78rem;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.65));opacity:0;transition:opacity .3s}
+.tile:hover span,.tile:focus-visible span{opacity:1}
+@media (hover:none){.tile span{opacity:1}}
+.lb[hidden]{display:none!important}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,14,13,.94);display:flex;align-items:center;justify-content:center;gap:.5rem;padding:calc(1rem + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(1rem + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:.7rem;min-width:0;flex:1}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:3px}
+.lb figcaption{font-family:var(--ui);font-size:.88rem;color:#dfe6e1;text-align:center}
+.lb button{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:999px;width:2.8rem;height:2.8rem;font-size:1.5rem;line-height:1;cursor:pointer;flex:none}
+.lb button:hover{background:rgba(255,255,255,.18)}
+.lb-x{position:absolute;top:calc(.8rem + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font-size:1rem!important}
+/* quotes */
+.quote{margin:0;display:flex;flex-direction:column;gap:.6rem}
+.qt{font-family:var(--display);font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.35;margin:0;text-wrap:balance}
+.qt[lang="te"]{font-family:var(--te)}
+.qt[lang="sa"]{font-family:"Tiro Devanagari Sanskrit",var(--te)}
+.qtr{margin:0;color:var(--ink-soft);font-style:italic}
+.quote figcaption{font-family:var(--ui);font-size:.82rem;color:var(--ink-soft)}
+.qday{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.qday .quote{max-width:46rem;border-left:3px solid var(--kumkum);padding-left:1.2rem;margin-bottom:1rem}
+.qday .qt{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.quotes{columns:2 22rem;column-gap:2.5rem}
+.quotes .quote{break-inside:avoid;padding:1.3rem 0;border-top:1px solid var(--rule)}
+/* village + address */
+.village{margin-top:1.8rem;padding:1.3rem 1.4rem;background:var(--paper-2);border-radius:4px;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+.village h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:0}
+.village h3 span{font-family:var(--te);color:var(--turmeric);font-size:1.1rem;margin-left:.4rem}
+.village address,.addr{font-style:normal;line-height:1.55}
+.village p{margin:0}
+.addr{display:flex;flex-direction:column}
+.addr b{color:var(--ink);font-weight:600}
+footer{border-top:1px solid var(--rule);padding-block:2rem;font-family:var(--ui);font-size:.85rem;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:2.2rem}
+  .hero .art{max-width:16rem;margin:0 auto;order:-1}
+  .about{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:.3rem}
+  .row .tag{justify-self:start}
+  .pl-body{grid-template-columns:1fr}
+  .now{min-height:13rem;padding:1.5rem 1.2rem}
+  .lines{max-height:12rem}
+  .feature{grid-template-columns:auto minmax(0,1fr)}
+  .feature .go{grid-column:2}
+  .pair{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:14rem 9rem 9rem}
+  .mosaic .m0{grid-row:auto;grid-column:span 2}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:9rem;grid-auto-flow:dense}
+  .tile.tall,.tile.big{grid-row:span 2}
+  .tile.big{grid-column:span 2}
+  .lb-p,.lb-n{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#home"><b>Gramavasi</b><span>గ్రామవాసి</span></a>
+    <nav aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#stories" data-nav="stories">Stories</a>
+      <a href="#chants" data-nav="chants">Chants</a>
+      <a href="#village" data-nav="village">Village</a>
+      <a href="#quotes" data-nav="quotes">Quotes</a>
+      <a href="#about" data-nav="about">About</a>
+      <button type="button" class="amb" id="amb" aria-pressed="false" title="Soft background music while you read"><i aria-hidden="true">♪</i><span>Music off</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <address class="addr"><span>Chakicherla village, Ulavapadu Mandal</span><span>Prakasam District, Andhra Pradesh 523292, India</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292" target="_blank" rel="noopener">Open in Google Maps ↗</a></address>
+    <span><a href="https://namassumaanjali.blogspot.com">Namassumanjali blog</a> · <a href="https://www.youtube.com/@Gramavasee">YouTube</a></span>
+  </div>
+</footer>
+
+<script>
+const YT = "https://www.youtube.com/@Gramavasee";
+/* U(): use an embedded copy of a file when the page carries one (Claude viewer build), else the file path (website build) */
+const U = p => (window.EMB && EMB[p]) || p;
+const STORIES = [
+{slug:"varanasi", date:"2026-05-08", tag:"Spirit", title:"Kashi Within", te:"వారణాసి",
+ src:"https://namassumaanjali.blogspot.com/2026/05/varanasi.html", orig:"Telugu, with an English version",
+ blurb:"Why the Puranas describe Varanasi as a map of the inner body: the northward Ganga, the eight Bhairavas, Gyanvapi, Annapurna and the fires of Manikarnika.",
+ body:`In the Puranas and the yogic texts, Kashi is not just a place on the map. It is a spiritual mechanism, a mirror of the human body and of our subtle anatomy. Here are some of the hidden meanings behind its stories.
+## The esoteric symbolism of Kashi
+**Anandavana, the Forest of Bliss.** "Vana" usually means a forest, but here it is a forest of knowledge. Shiva is the embodiment of wisdom (Jnana), and Kashi is the place that uproots ignorance (Avidya) and gives self-realization. The inner meaning: our own heart must become an Anandavana through practice.
+**Avimukta Kshetra, the Never-Forsaken Land.** The scriptures say Shiva never leaves this land. In yoga this is the Ajna Chakra, the point between the eyebrows. Even when the senses withdraw from the world, the inner light of consciousness never leaves the seeker.
+**Manikarnika, the Jewel and the Ear.** The story says Parvati's jewel (mani) or earring (karnika) fell here. Mani is the radiance of the soul and karna is hearing. At the moment of death, Shiva is said to whisper the Taraka Mantra into the ear. This is the moment the ego is surrendered and the soul finally hears the primordial sound.
+**Uttara Vahini, the upward flow.** At Kashi the Ganga turns and flows north. Our desires and energies usually flow downward, toward material pleasure. In yoga the Kundalini must rise from the Muladhara at the base to the Sahasrara at the crown. The northward Ganga is the outer sign of this upward movement.
+**Bhairava Yatana.** Those who die in Kashi are said to undergo the suffering of Bhairava. Bhairava is the Lord of Time. This is not punishment. It is the burning away of ego (ahamkara) and attachment (mamakara), so that only the clean soul remains.
+**Kashi on the trident.** Kashi is said to survive even the dissolution of the world because it rests on Shiva's trident. The three prongs are the three gunas, sattva, rajas and tamas. Kashi stands for Turiya, the state beyond all three. A yogi who reaches it is free of the cycle of birth and death.
+## Kashi and the subtle body
+According to Yoga Shastra, the geography of Varanasi matches the subtle body.
+- **Varana is the Ida nadi**, the lunar channel of the left nostril: cooling, mental energy.
+- **Asi is the Pingala nadi**, the solar channel of the right nostril: heat and physical energy.
+- **Kashi is the Sushumna**, the central channel of spiritual light.
+The point where Ida and Pingala meet and dissolve into Sushumna is the Ajna Chakra. That is the true Varanasi. In the Jabala Upanishad, Yajnavalkya explains Varanasi as "varana", what blocks sin, and "asi", what destroys it.
+The Panchakroshi Yatra, the walk around Kashi, stands for purifying the five sheaths (koshas): physical, vital, mental, intellectual and blissful. Completing it means leaving behind the idea that we are only the body. So "Kashyam maranam muktih", death in Kashi is liberation, means killing the ego and merging into the light of the Self.
+## The guardians and the well of wisdom
+**The Eight Bhairavas** guard Kashi in eight directions. Spiritually they master eight inner weaknesses: desire, anger, greed, pride, attachment, jealousy, fear and accumulated karma.
+**Kalabhairava**, the kotwal or police chief of Kashi, rules over them. A pilgrimage is incomplete without his darshan. His grace means reaching the timeless state of the soul.
+**Gyanvapi, the well of knowledge.** In the Kashi Khanda of the Skanda Purana, Shiva digs this well with his trident at a time when the world had no water, and bathes the Avimukteshwara linga with it. A well is deep, and so is knowledge. Drinking its water means immersing oneself in pure consciousness (chit). Its three prongs also stand for knowledge, will and action, in balance.
+## Annapurna and the begging bowl
+Shiva once told Parvati that the world, even food, is maya. Parvati, who is Prakriti, made food vanish from the world. Everyone went hungry, Shiva too, until he went to Annapurna in Kashi with his begging bowl.
+Shiva is Purusha, consciousness; Parvati is Prakriti, nature and energy. Consciousness needs a nourished body to do its sadhana. "Annam na nindyat", never insult food. The begging bowl is our ego: when we offer it to the Mother, she fills it with wisdom and detachment. That is why pilgrims see Annapurna before Vishwanatha, and why it is believed that no one in Kashi should sleep hungry. In yoga, Annapurna is linked to the Manipura Chakra at the navel, the seat of the digestive fire.
+## Manikarnika, the great cremation ground
+Elsewhere, a cremation fire burns only when a body arrives. At Manikarnika the fires have not gone out for thousands of years. They stand for Chidagni, the fire of consciousness that keeps burning away our inner enemies.
+Shiva wears ash because everything ends as ash. It reminds us that the body is temporary and the soul is lasting. Shiva lives in the cremation ground because he lives wherever ego turns to ash. In Kashi, death is not a tragedy. It is a festival of release.
+## Jyotirlinga, Ganga Aarti and Dashashwamedh
+Shiva appeared as an endless pillar of light that even Brahma and Vishnu could not measure. That pillar is the Sushumna in our spine. Infinite consciousness is not found by searching outside; it opens through surrender.
+The evening Ganga Aarti at Dashashwamedh Ghat, with fire, incense, bells and mantras, purifies the senses. Five or seven priests moving in one rhythm mirror the five pranas or the seven chakras. Brahma is said to have performed ten Ashwamedha sacrifices here. The ten horses are our ten senses. Offering them to God is the real Dashashwamedha.
+Traditionally the pilgrimage runs from Prayag, to Kashi, to Gaya: Prayag for sacrifice, Kashi for knowledge, Gaya for release.
+## The Aghoris
+"Ghora" means terrifying; "Aghora" means without fear. An Aghori sees Shiva in what the world finds repulsive, and draws no line between pure and impure. They live in cremation grounds to lose the fear of death, the root of all fear, and carry the skull (kapala) as a sign that the ego has been conquered. Aghora is also one of the five faces of Shiva. Not everyone who looks like an Aghori is one. A true Aghori shows no powers and frightens no one. He quietly sees Shiva within.
+## In the end
+Kashi is not a city of stone and river alone. It is a living laboratory of the spirit. The upward Ganga, Annapurna's lesson and the Aghoris' non-duality all lead from the world of food (annam) to the world of liberation (moksha). To die in Kashi is to let the ego burn in the fire of wisdom, so the light of the soul can shine.`},
+
+{slug:"satyam-anna", date:"2026-01-31", tag:"People", title:"Satyam Anna", te:"సత్యమన్న",
+ src:"https://namassumaanjali.blogspot.com/2026/01/sathyamanna.html", orig:"Telugu",
+ blurb:"My elder brother, who at 24 and in his first job decided to send me ₹100 every month until I finished polytechnic. Written on his retirement.",
+ body:`> One true sapphire is enough. Why carry a basket of glittering stones? One verse truly understood is enough. (Vemana)
+That verse fits my brother Satyam perfectly.
+From 1986 on, during the school holidays, my father would sometimes take me from our village, Chakicherla, to my Gopi Babai's house in Ongole. That is how I grew close to my brother, shyly at first. Slowly, without my noticing, he began to shape me in small ways. It was the most important stage of my student life.
+- I tried to copy his handwriting.
+- Jotter ballpoint pens, always with black ink.
+- Dragging the speakers all the way to the bathroom door so we would not miss a ball of the cricket commentary.
+- The gang of friends who played cricket together.
+That is why I often think our habits rub off on people around us without our knowing.
+Beyond all this, he had a quiet but strong wish that our generation, unlike our fathers', should study well and live with dignity in society.
+In 1991 I got a polytechnic seat in Hyderabad. Until then I had been studying while living with my maternal grandparents. Their finances were modest, and my father's were no better. When my future looked uncertain, relatives on my father's side, Subbakka, Shakuntala Peddamma, Ramamurthy Tatayya, Kachatta and Sesha Bava, came forward to support me every month. My brother, who had just joined LIC, made a generous decision: he would send me ₹100 every month until I finished polytechnic. That is about ₹1,500 in today's money. Together they sent ₹400 to ₹450 a month. Their decision, at that turning point, changed my life and made me more responsible.
+It is one thing for elders to help. To make that choice at 23 or 24, while you are still building your own footing, is something maybe five or ten people in a hundred would do.
+Thirty-four years have spun past in front of my eyes. I can hardly believe he has already retired.
+Among the people who shaped me at different stages of my life, my brother has an important place.
+On his retirement, this is my Namassumanjali, my offering of salutations.
+For you, Anna, the Apratiratham I recited: [listen on YouTube](https://youtu.be/QujH2ifqPtk)
+## About the Apratiratha Suktam
+"Apratiratha" means the charioteer no one can stand against, the unrivalled hero. It is counted among the most powerful hymns of the Rig and Yajur Vedas. It is a prayer for victory, recited to overcome obstacles and adversaries in life and to succeed in whatever one undertakes.`},
+
+{slug:"balu-garu", date:"2025-06-15", tag:"Tribute", title:"Farewell, Balu Garu", te:"బాలు గారు",
+ src:"https://graamavaasi.blogspot.com/2025/06/balu-garu-tribute-to-spb.html", orig:"Telugu",
+ blurb:"A poem for S. P. Balasubrahmanyam, the voice that woke us, sang us to sleep, and walked with every Telugu home through every mood.",
+ body:`His voice woke us at dawn with "Tellarindi Legando". It filled us with devotion through the Bilvashtakam. It sang us to sleep with "Lalijo Lalijo".
+It set young hearts racing with "Kurrallo Kurrallu", and fired up a generation with "Hello Guru Prema Kosame". It lit the flame of love with "O Papa Lali", and broke our hearts with "Prema Entha Madhuram".
+It stirred a thousand daydreams with "Oohalevo Rege", made us laugh with "Navvulu Ruvve Puvvamma", and taught us Vedanta with "Boodidiche Vaadinemi Adigedi".
+It soothed us and it ruled us. It made us cry and it consoled us. It made us laugh, it roused us to revolt, it filled us with love for the country. It thrilled us, it greeted us, it gave us goosebumps.
+For lovers of music it became affection itself, bathing in the river of rasa. It came to the earth as a flute, and returned to the sky as song. It told us that music is the stairway to non-duality and to the nectar of immortality, and then it merged into Shankara himself.
+It feels as if my own soul has left me. With a heart full of tears, farewell, Balu garu.
+> Victorious are the blessed poets, perfected in rasa. Their bodies of fame know no fear of old age or death. (Bhartrhari)`},
+
+{slug:"sarath-mother", date:"2024-03-02", tag:"People", title:"For Sarath's Mother", te:"శరత్ అమ్మ గారికి",
+ src:"https://namassumaanjali.blogspot.com/2024/03/dedicated-to-childhood-friend-saraths.html", orig:"Telugu",
+ blurb:"A letter to a childhood friend about his mother: the rope cot she pulled out for me, the festival sweets, and a laugh that never left her face.",
+ body:`Mama,
+I keep remembering the days we played in your old thatched house. Running around in shorts, then clumsily tying our first lungis. It feels like yesterday.
+I remember your mother and father riding doubles on one bicycle, twenty kilometres each way, to the tobacco factory for ten-hour shifts.
+Whenever I came to your house, your mother would say, "Come, son, Sivaramakrishna, sit," and pull out the rope cot for me. I have still not forgotten the boiled palmyra sprouts, the jaggery ariselu and the manugubulu she served with a smile at festivals and holidays.
+I can still see her laughing while I teased your brother Kiran, calling him "your Swami" and making up stories about him. She would be cooking for you, or blowing on the husk stove to heat bath water, or watering the flower plants she loved like her own children.
+No matter how many troubles came her way, her face was always laughing and bright. That was who she was.
+I count it as my good fortune that I could see her a few hours before she passed, and make her laugh for a little while. In our childhood, and in our climb up in life, your mother was both the one who held the strings and one who played a part on the stage.
+Your friend, Siva`},
+
+{slug:"ecil-days", date:"2022-04-30", tag:"People", title:"My ECIL Days", te:"",
+ src:"https://namassumaanjali.blogspot.com/2022/04/my-ecil-days-seeds-of-work-ethics.html", orig:"English",
+ blurb:"1995, a one-rupee canteen meal, Silicon Graphics machines and a 210 MW power plant simulator. How Vijay Sir sowed the seeds of my working life.",
+ body:`March 1995. That was when we found out which company we would be posted to for the six-month industrial training that was part of our course. Seventy to eighty percent of us went to ECIL. If you were posted at the main campus near Kushaiguda, you could ride the employee shuttles and eat good food at subsidised prices: a meal for one rupee, tea or coffee for 25 paise. What more could a student want, especially one from a poor family like me? That was the whole excitement.
+It did not last. On day two of my apprenticeship I was asked to move to a different campus. Things do not always go the way you plan. I was placed in CSG-2, the Computer Software Group, at the HUDA Complex in Tarnaka. That meant no break from cooking, city buses, and a three-kilometre walk every day.
+At first it was overwhelming. In college we struggled to get even an hour or two a month in front of a green terminal in the lab. Here I was looking at Silicon Graphics machines, built for simulators of flights and power plants, with high-end graphics and compute power. I thought, "Where have I suddenly landed?"
+I was assigned to R. Vijay Lakshman Rao Garu, Vijay Sir, the project leader of the 210 MW Power Plant Simulator, a multi-crore and very prestigious project for both ECIL and the National Power Training Institute. My first job was to code a module called Industrial Air Systems. That is when I started learning Fortran.
+The unit was headed by Raghavendra Rao Garu, Deputy General Manager, a short man with a sharp mind who lived by very simple principles. The team mixed every age group: a couple of fresh graduates, some with a few years at ECIL (a few hoping for an H-1B to the US), and a group with ten to fifteen years of experience.
+Vijay Garu, who was himself a diploma holder and did his IETE later, was impressed with the effort I was putting in and began encouraging me. Six months flew by. I was wondering what next and had started attending interviews when he offered me a contract role on the project. I joined at ₹1,200 a month plus ₹150 for a bus pass.
+I started as a Fortran programmer, but I wanted to understand everything: how the project was designed, how the systems were set up, how the control panels connected to the simulator, how a whole power plant works. Seeing that, Vijay Sir gave me more work and more freedom. The boy who had been too shy to walk into the college computer lab was now administering SGI Indy workstations and SGI Challenge servers, handling backups and access for other developers. Soon I had root access. I learned C for low-level device drivers, mastered IRIX administration, and learned the whole workflow of power plant operations and simulation.
+Working hours were nine to six, but Vijay Sir and I were usually in by 8:30 and the last to leave around eight. The trust I was given made some colleagues envious. Most developers were in their early thirties, and some had trained in the US on the simulator tools.
+Working with Vijay Sir taught me many things and laid the base for my career: his passion, how he tackled very complex problems, handled ego clashes and conflict, and above all, how he groomed young people.
+Over those two-plus years we grew close. He treated me like a younger brother. Most days he dropped me on his Vespa at the ZTS bus stop, and I walked or got a lift the remaining two kilometres to my room. On the way we stopped for a half cup of Irani chai with Tie biscuits. Even today, whenever I am in Hyderabad, Irani chai and Tie biscuits are a must.
+He often took me home to watch cricket or films. I came to respect him even more seeing how he carried his responsibilities for a large family: three brothers, his mother, the children. I never felt alone there. Sudha Madam, his brother Kishan, the kids Vaishali and Vaidehi all made me feel at home.
+When the project was done, the simulator had to be installed at NPTI in Nagpur. Vijay Sir made sure I was on the crew, even though I was a contractor and not an ECIL employee. In those days contractors were not given much respect.
+For whatever I have been able to do since 1997, the credit goes to Vijay Sir for laying the foundation. He inspired many young people at ECIL. His passion, his hunger for success, his problem solving, his love of learning, his never-give-up attitude and his commitment to his family all inspired me when I was twenty.
+Thank you, Vijay Sir, for laying those foundations, shaping my career and inspiring me. Wishing you and your family a healthy and happy life.
+Yours truly, Sivaramakrishna`},
+
+{slug:"sine-wave", date:"2021-11-27", tag:"Life", title:"Life Is a Sine Wave", te:"",
+ src:"https://namassumaanjali.blogspot.com/2021/11/life-is-sine-wave_27.html", orig:"English",
+ blurb:"Eighteen years in one small village, eighteen across the world. The ups and downs between, and the start of a series about the people who carried me.",
+ body:`When I thought of writing this blog, I wondered how to describe life. A phrase struck me: "Life is a sine wave." I patted myself on the back for it. Then I searched to see if anyone had said it before, and found a whole song by that name, by the band Lonely Robot. What an apt way to talk about life.
+Let me tell you what I want to write about in a series of posts.
+For the first eighteen years of my life, my world was my small village Chakicherla and the towns nearby, Nellore, Kavali and Ongole.
+In the next eighteen, I saw much of the world: the US, Singapore, the UK, Sweden, Norway, Ireland, Japan, Dubai, Thailand, China, Germany, Hong Kong.
+- I lived in small huts and slept on mud floors. I stayed in five-star hotels.
+- I dipped in village tanks in the rainy season. I took a shower in the air at 35,000 feet.
+- I hardly had proper slippers until I finished college. Now I have shoes for every occasion.
+- I used to look for a friend who would buy me a Gold Spot or a colour soda. I have tasted some of the best champagne in the world.
+- I walked miles to get places, and could not afford to rent a bicycle for thirty minutes in the village. I have driven luxury cars and flown first class.
+- I ate fermented rice for breakfast. I have sat down to continental spreads I could never have imagined.
+There were times I looked around for someone to help me. I am glad that later I could help a few others chase their dreams.
+Life has given me everything. I cannot complain.
+I had a never-give-up attitude, the passion to put real effort into whatever I chose, a little jugaad, no shame in being laughed at while trying new things, and the ability to get things done. But beyond that, so many people and moments taught me something, helped me when the chips were down, or simply listened. I am forever grateful to them.
+I want to write a series of posts about those people and moments. I am not perfect, and being flawed I am in no position to preach. But if young people can take a leaf or two from these experiences, they may become better people and give life to someone else.
+Watch this space.
+Sivaramakrishna Perubotla`},
+
+{slug:"grandfather", date:"2020-12-06", tag:"Chants", title:"The Veda in Every Atom", te:"వేదం అణువణువున నాదం",
+ src:"https://namassumaanjali.blogspot.com/2025/06/vedam-anuvanuvuna-nadam-tribute-to-my.html", orig:"Telugu",
+ blurb:"Saturday lamp pujas, creamy curd at lunch, and an uncle intoning the Maha Sankalpam at weddings. How my grandfather gave me the chants.",
+ body:`The great lyricist Veturi wrote that the Veda is sound in every atom. The Veda lives in its svaras, its notes. Maybe that is why mantra chanting and Vedic recitation held me spellbound from childhood.
+If I can chant a little today, most of the credit goes to my grandfather. Every Saturday he performed the pindi deeparadhana, an offering of rice-flour lamps, to Lord Venkateswara at home, and everyone in the house had to be present for the Mantrapushpam. Wherever I was wandering and making mischief, I would be home by noon, pour hot water from the big kaagu over myself in a rush, and be ready in time. Most important of all, every Saturday lunch came with cream and curd. Thick creamy curd was my special treat.
+Then there was the temple beside our house: abhishekam on Mukkoti Ekadashi, the Karthika month pujas, Sita Rama Kalyanam on Sri Rama Navami, Vinayaka Chavithi, the Satyanarayana Vratam, annual death rites, and the blessing chanted after the tenth-day rites. Not one occasion but all year round, there was always a chance to hear mantras.
+Just by listening I learned how to sound the udatta and anudatta, the raised and lowered accents. Some afternoons after lunch, my grandfather would make my uncle recite mantras again and again. At weddings, during the kanyadanam, the Maha Sankalpam is recited. I would go and sit beside my Venkatasubbaiah Babai and listen with ears pricked as he named the seven worlds below, Atala, Vitala, Sutala, Talatala, Rasatala, Patala, and the worlds above them. The Maha Sankalpam, the Aashirvachanam, four passages of Ghanapatham: I loved listening to them all.
+Later, in Hyderabad, I learned the Vishnu Sahasranamam by heart. Thanks to Brahmanandam Master's Friday pujas, the Lalitha Sahasranamam came by heart too.
+When I was small, my grandfather would also lay me down on the rope cot under the evening sky and recite verses from Pothana's Bhagavatam. One was the story of Vishnu rushing to save the elephant king, in such a hurry that he tells no one, not even Lakshmi, and takes neither conch nor discus.
+They say what you learn is useful someday. All of this once even helped me earn when I badly needed money: two or three times in Hyderabad I went to do japam and earned a little.
+Tatayya, I offer you my abhivadanam, the traditional salutation in which one names one's lineage: of the three sages Angirasa, Barhaspatya and Bharadwaja, of Bharadwaja gotra, of Apastamba sutra, student of the Yajurveda, I, Sivaramakrishna Sharma, bow to you.
+I dedicate this to my grandfather, who planted the seed of this love, and share some of the shlokas and suktams I have been practising. His death anniversary falls this month.
+- [Aashirvachanam](https://www.youtube.com/watch?v=mf3GtnzMBtE)
+- [Shanti Mantram](https://youtu.be/IbMtRSnbte0)
+- [Sri Rudra Laghunyasam](https://youtu.be/rPVBFkX5jHU)`},
+
+{slug:"childhood-guru", date:"2020-11-16", tag:"People", title:"Sri Gurubhyo Namaha", te:"శ్రీ గురుభ్యో నమః",
+ src:"https://namassumaanjali.blogspot.com/2025/06/sreegurubhyonamaha-tribute-to-my.html", orig:"Telugu, with an English version",
+ blurb:"Brahmanandam Master: 4 AM pujas, evening walks to the sea through cashew groves, and the advice to sit still for half an hour.",
+ body:`Our Upanishads say Matru Devo Bhava, Pitru Devo Bhava, Acharya Devo Bhava: mother is God, father is God, teacher is God.
+A good teacher's influence on a life is immense. Through our rises and falls, the foundations laid by childhood teachers keep shaping us and keep us on the right path, often without our knowing.
+In villages, the ayyavarlu, as we respectfully called our teachers, blended in with everyone. Many had come from other towns and settled there; some stayed only for a while. Students often visited their homes and helped out. I was close to almost all of mine: Bhaskara Rao Garu, our PET from Addanki; Venkatratnam Master, the social studies teacher and an ex-military man; the crafts master; Narayana Garu, from Darsi I think; the Hindi madam from Ongole; Brahmanandam Master for maths; the headmaster, who taught tenth-class English; and Sri Hari Master for Telugu.
+Among those who guided me, Brahmanandam Sir matters most. Even then, students facing public exams went for tuition. Usually the science master took the seventh class and Brahmanandam Master took the tenth. But when our batch reached seventh, the science master did not hold tuition, so all of us joined Brahmanandam Master. My time as his student began at twelve. He was a guide in so much more than lessons: sports, exercise, spirituality, devotion, discipline, holding to values, and supporting one's family.
+He never thought, "These are just children, why get close to them?" After school he played volleyball, ball badminton and softball with us until dark. On weekends and in summer he walked in the evening to the seashore a mile from our village, and many times a few friends and I went along, walking through the cashew groves, eating cashew fruit and listening to his stories.
+He woke at 4 AM for puja and japa to the Goddess, and did an hour of puja again each evening. Every Friday he recited the Lalitha Sahasranamam. We first sat in only for the prasadam afterwards, but within a few weeks we knew all thousand names by heart. On some Sundays he kept mauna vratam, a vow of silence. It drew some criticism, but he never wavered.
+The bond that began in seventh class grew until, during my intermediate and polytechnic years, I was teaching tenth-class students at his own tuition. Our family and my grandparents were close to his whole family too.
+I was a boy who could not focus for more than ten minutes. He told me, "Ore Sivaramakrishna, if you can sit for half an hour without moving, you will come up in life." It was literally true, and that advice has helped me enormously. Today I can work for hours at a stretch.
+So much about him shaped me: the lesson from our tenth-class English text on Luz Long and Jesse Owens, that winning is not everything and sportsmanship matters; his discipline; how he put his younger brother through engineering; how he kept relatives' children in his home so they could study; his drive to excel in his profession. When my grandparents could not manage the annual tuition fee of ₹100, he cut it in half.
+And the memories: our mischief at tuition; the nights our village screened three films on one ticket with a rented colour TV and VCR, when Ayyavaramma, his daughters Anantha Lakshmi and Tulasi, and all of us students went together and slipped back before Sir woke at four; lessons on the street steps; Friday prasadam; and now and then the sting of the cane.
+He stood as an example in so many ways, always patting my back, and he is one of the main reasons I can stand on my own feet. How can I ever repay you, Sir?
+Thank you for being there in my life. Wishing you and Madam a healthy life ahead. Thank you, Tulasi and Anantha Lakshmi, for staying in touch.
+Acharya Devo Bhava.`},
+
+{slug:"ramamurthy-tatayya", date:"2020-10-26", tag:"People", title:"Ramamurthy Tatayya, a Quiet Giant", te:"రామ్మూర్తి తాతయ్య",
+ src:"https://namassumaanjali.blogspot.com/2025/06/rammurthy-thathaiah-quiet-giant-man-who.html", orig:"English and Telugu",
+ blurb:"Hyderabad, October 1991. A holdall, a trunk, a maroon suitcase, and the man who crossed the city on two buses so a boy would not go without.",
+ body:`In a world where success is loud and lit up, there are rare people who quietly shape the lives of others without ever asking for credit. This is a tribute to one of them: Ramamurthy Tatayya, who stood by me not with grand gestures but with small, steady kindnesses that changed the course of my life.
+To young readers: never underestimate humility, consistency and genuine care. You may not see it now, but those qualities, in others and one day in yourself, are what build strong lives.
+## Arriving in Hyderabad
+In October 1991 I went to Hyderabad for the first time, to join polytechnic college. My father and I got on the bus, but my head was full of questions. I had the admission, yes, but where would I stay? How would I eat? How would I manage for three and a half years? What about money? Could I even cope with English-medium study?
+We got down at Gowliguda bus station around 6 AM. With an army-style holdall of blankets and pillows, a trunk and a maroon suitcase, we climbed into a rickshaw. Unlike the ones in Nellore, a Hyderabad rickshaw felt like sitting in a pothole. We headed for Hanuman Tekdi, Koti.
+That was my first visit to the home of the hero of this story. He was technically my uncle, but I always called him Tatayya. He must have been past sixty: a dignified man with a warm smile. When I first saw him I felt respect mixed with a little fear.
+I loved his house: a tiled home with a row of rooms, plants all around, and a small room where he taught tuition. His grandchildren called him Tuition Tatayya. He lived there with his wife Rukminiamma, Indiratta, Kachatta (Kameswari), Laddu, whose real name I don't recall, and Rajesh.
+## The tenth of every month
+I had reached Hyderabad. The real question was how I would meet my monthly costs. It was settled that on the tenth of every month I would go to Tatayya's house and collect money sent by many kind people: Shakuntala Peddamma ₹100, Subbakka ₹50, Kachakka ₹50, Satyam Anna ₹100 (he had just started working, I think), and Ramamurthy Tatayya himself ₹50. In all, ₹350 to ₹400 a month. My grandparents sent rice. That is how my studies, and my life, in Hyderabad began.
+## Why he was a great man
+You could not leave their house without eating. If anyone let a guest go hungry, Tatayya would skip his own meal. On each visit I sat for an hour or two, at least half an hour with Rukminiamma, who because of her health spent most of her time resting in bed.
+If there was no food ready, he would ask Indiratta to give me at least milk or Horlicks. If no one moved, he would call out, "Hey Rukku, can you give a glass of milk to this boy?" Sometimes he would quietly press ₹20 into my hand and say, "Re Siva, have something on the way. There isn't anything at home."
+One month the money from everyone was late. It was already the fifteenth. One day I was waiting for the 38H bus back to my room in Hanumanpet, Malkajgiri, and I saw Tatayya at the stop. Surprised, I asked what he was doing there.
+"I was coming to your room to give you the money," he said. "I was worried, not sure how you were managing. Good that I found you here."
+Can you imagine? At his age he was ready to change two buses and cross the city to my room in a far corner, just so I would not struggle. Who thinks like that anymore?
+When the three years of classes ended, the last six months were industrial training. I started at ECIL with a stipend of ₹600. I went straight to him and said I would not need money from now on. I will never forget the joy in his eyes that day.
+That moment, and his character, taught me what no textbook could. He was one of the people who turned my life. A man of greatness and grace. If I can follow even one percent of his values, that is enough.
+## Looking back
+A small village in coastal Andhra and the city of Hyderabad. How would people from such different places even meet, let alone hold each other up? My father may have mentioned them now and then, but that they would step forward for me like this still feels like a dream.
+There are many great souls in this world, and I bow to all of them. Ramamurthy Tatayya stands in the front row.
+Books taught me lessons. People like Ramamurthy Tatayya taught me values: quiet generosity, care for dignity even in small things, and help given without being asked.
+To the young people reading this: success is not always about the spotlight. It is about showing up when it matters, even if no one sees. If you ever get the chance to be someone's quiet strength, take it. The world needs more Tatayyas.
+Forever grateful.`}
+];
+
+const CHANTS = [
+  {t:"Aashirvachanam", d:"The Vedic blessing chanted at the close of ceremonies, as I heard it from my elders.", u:"https://www.youtube.com/watch?v=mf3GtnzMBtE"},
+  {t:"Shanti Mantram", d:"Peace invocations from the Upanishads, recited before study and worship.", u:"https://youtu.be/IbMtRSnbte0"},
+  {t:"Sri Rudra Laghunyasam", d:"The preparatory nyasa recited before the Sri Rudram, from the Krishna Yajurveda.", u:"https://youtu.be/rPVBFkX5jHU"},
+  {t:"All chants and village videos", d:"Suktams, stotras and glimpses of village life on the Gramavasi channel.", u:YT}
+];
+
+/* Photos from the original Blogger posts. First photo opens the story. */
+const PHOTOS = {
+  "satyam-anna":[{f:"satyam-1"},{f:"satyam-3",c:"A Jotter ballpoint, black ink, the way Anna wrote",small:1},{f:"satyam-2"}],
+  "balu-garu":[{f:"balu-1",c:"S. P. Balasubrahmanyam (1946–2020)"}],
+  "ecil-days":[{f:"ecil-1"},{f:"ecil-2",c:"An SGI workstation, the kind we worked on at CSG-2"},{f:"ecil-3",c:"SGI Challenge series servers"}],
+  "grandfather":[{f:"grandfather-1"}],
+  "childhood-guru":[{f:"guru-1"},{f:"guru-2"},{f:"guru-3",c:"Our 10th class group photo. I'm standing, in the blue full-sleeve shirt."}],
+  "ramamurthy-tatayya":[{f:"tatayya-1"},{f:"tatayya-3",c:"The army-style holdall",small:1},{f:"tatayya-2",c:"The trunk box",small:1},{f:"tatayya-4"},{f:"tatayya-5"}]
+};
+
+/* Quotes: lines from the stories, and the verses they lean on */
+const QUOTES = [
+  {q:"If you can sit for half an hour without moving, you will come up in life.", who:"Brahmanandam Master, to a twelve-year-old me", s:"childhood-guru"},
+  {q:"Books taught me lessons. People like Ramamurthy Tatayya taught me values.", who:"Sivaramakrishna", s:"ramamurthy-tatayya"},
+  {q:"If you ever get the chance to be someone's quiet strength, take it. The world needs more Tatayyas.", who:"Sivaramakrishna", s:"ramamurthy-tatayya"},
+  {q:"Our habits rub off on the people around us without our knowing.", who:"Sivaramakrishna", s:"satyam-anna"},
+  {q:"Life has given me everything. I cannot complain.", who:"Sivaramakrishna", s:"sine-wave"},
+  {q:"Winning is not everything. Sportsmanship is.", who:"The Luz Long and Jesse Owens lesson, 10th class English", s:"childhood-guru"},
+  {q:"Never give up. Put real effort into whatever you choose, and don't be ashamed of being laughed at while you try something new.", who:"Sivaramakrishna", s:"sine-wave"},
+  {q:"In Kashi, death is not a tragedy. It is a festival of release.", who:"Kashi Within", s:"varanasi"},
+  {q:"నిక్కమైన మంచి నీల మొక్కటి చాలు, తళుకు బెళుకు రాళ్లు తట్టెడేల", te:1, tr:"One true sapphire is enough. Why carry a basket of glittering stones?", who:"Vemana", s:"satyam-anna"},
+  {q:"मातृदेवो भव । पितृदेवो भव । आचार्यदेवो भव ।", sa:1, tr:"Mother is God. Father is God. Teacher is God.", who:"Taittiriya Upanishad", s:"childhood-guru"},
+  {q:"अन्नं न निन्द्यात् ।", sa:1, tr:"Never insult food.", who:"Taittiriya Upanishad", s:"varanasi"},
+  {q:"జయంతి తే సుకృతినో రససిద్ధాః కవీశ్వరాః", te:1, tr:"Victorious are the blessed poets, perfected in rasa. Their bodies of fame know no old age or death.", who:"Bhartrhari", s:"balu-garu"}
+];
+
+/* Village photo gallery: Chakicherla */
+const GALLERY = [
+  // each photo: [file, caption, size]  size: "w" wide, "t" tall, "b" big (2x2), "" normal. Each group fills 4 columns exactly.
+  {id:"mornings", t:"Winter mornings", te:"మంచు ఉదయాలు", d:"Fog sits on the fields until the sun burns through.", p:[
+    ["birds-mist","Birds over the fields at first light","w"],["road-mist","The village road in winter fog","t"],["road-poles","The road out of the village","t"],["canal-mist","The irrigation canal on a foggy morning",""],["canal-paddy","Canal and young paddy",""]]},
+  {id:"paddy", t:"Paddy, from water to gold", te:"వరి పొలాలు", d:"The year turns with the paddy: puddled fields, seedlings, green, then gold.", p:[
+    ["tractor","Puddling the field before planting","w"],["paddy-flooded","Flooded fields, ready for seedlings",""],["transplanting","Bundles of seedlings waiting to go in",""],["green-field","Green fields after the rains","w"],["golden-paddy","Ripe paddy, ready for harvest","w"]]},
+  {id:"sea", t:"The sea, a mile away", te:"సముద్రం", d:"Through the cashew groves to the Bay of Bengal, where the fishing boats come in.", p:[
+    ["boat-2","On a fishing boat","t"],["boat-1","Pushing off with the pole","t"],["beach-walk","Walking the shore","t"],["sunset","Sunset over the scrub near the shore","t"],["boats-shore","Fishing boats pulled up on the beach","w","50% 88%"],["boats-shore-2","Boats waiting for the evening catch","w","50% 88%"]]},
+  {id:"home", t:"Home and the doorstep", te:"ఇల్లు, వాకిలి", d:"Every morning the doorstep is swept, sprinkled and drawn with a fresh muggu.", p:[
+    ["house-muggu","Our doorstep with the morning muggu","t"],["house-gate","The front gate","t"],["muggu-1","A festival muggu in colour","w"],["well","The village well",""],["well-down","Looking down the well",""],["muggu-2","Muggu by the steps","t"],["elder-reading","The morning paper on the rope cot","w"],["roses","Roses in the yard","t"],["flowers","Flowers by the wall","w","50% 70%"]]},
+  {id:"sankranti", t:"Sankranti and village life", te:"సంక్రాంతి", d:"The Haridasu singing door to door, Bhogi fires before dawn, carts and cattle on the village road.", p:[
+    ["haridasu-1","The Haridasu, singing door to door in Dhanurmasam","t"],["haridasu-2","The Haridasu on his rounds","t"],["bhogi-fire","Bhogi fire before dawn","t"],["bhogi-street","Bhogi fires down the street","t"],["bullock-cart","Bullock cart on the village road","t"],["cattle-dusk","Cattle coming home at dusk","t"],["puja-drawing","A ritual drawing in red and white","b"]]}
+];
+
+/* Chakicherla */
+const PLACE = {name:"Chakicherla", te:"చాకిచర్ల", lines:["Chakicherla village, Ulavapadu Mandal","Prakasam District, Andhra Pradesh 523292","India"], map:"https://www.google.com/maps/search/?api=1&query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292"};
+
+/* Narayana Suktham: recording, background music, synced lyrics (from the Vedic Chants project) */
+let NS=null;
+
+const app = document.getElementById("app");
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1 ↗</a>');
+const fmt = d => new Date(d+"T12:00:00").toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"});
+const sorted = [...STORIES].sort((a,b)=>b.date.localeCompare(a.date));
+
+function render(md){
+  const out=[]; let list=null;
+  for(const raw of md.split("\n")){
+    const l=raw.trim(); if(!l) continue;
+    if(l.startsWith("- ")){ (list ||= []).push(`<li>${inline(l.slice(2))}</li>`); continue; }
+    if(list){ out.push(`<ul>${list.join("")}</ul>`); list=null; }
+    if(l.startsWith("## ")) out.push(`<h4>${inline(l.slice(3))}</h4>`);
+    else if(l.startsWith("> ")) out.push(`<p class="verse">${inline(l.slice(2))}</p>`);
+    else if(l.startsWith("!! ")) out.push(`<p class="note"><a href="#chants">${inline(l.slice(3))}</a></p>`);
+    else out.push(`<p>${inline(l)}</p>`);
+  }
+  if(list) out.push(`<ul>${list.join("")}</ul>`);
+  return out;
+}
+const fig = p => `<figure class="ph${p.small?" small":""}"><img src="${U(`img/${p.f}.jpg`)}" alt="${p.c?esc(p.c):"Photo from the original post"}" loading="lazy">${p.c?`<figcaption>${esc(p.c)}</figcaption>`:""}</figure>`;
+function withPhotos(blocks, photos){
+  if(!photos||!photos.length) return blocks.join("");
+  const [first,...rest]=photos;
+  const out=[fig(first)];
+  // spread the remaining photos evenly between paragraphs; pair small ones
+  const groups=[];for(const p of rest){const g=groups[groups.length-1];if(p.small&&g&&g.length===1&&g[0].small)g.push(p);else groups.push([p]);}
+  const step=Math.max(2,Math.floor(blocks.length/(groups.length+1)));
+  blocks.forEach((b,i)=>{out.push(b);const gi=(i+1)/step-1;if(Number.isInteger(gi)&&groups[gi]){const g=groups[gi];out.push(g.length>1?`<div class="pair">${g.map(fig).join("")}</div>`:fig(g[0]));groups[gi]=null;}});
+  groups.filter(Boolean).forEach(g=>out.push(g.length>1?`<div class="pair">${g.map(fig).join("")}</div>`:fig(g[0])));
+  return out.join("");
+}
+
+function rows(items){
+  return `<div class="index">${items.map(s=>`
+    <a class="row" href="#${s.slug}">
+      <time datetime="${s.date}">${fmt(s.date)}</time>
+      <div style="min-width:0"><h3>${esc(s.title)}${s.te?`<span class="te" lang="te">${s.te}</span>`:""}</h3><p>${esc(s.blurb)}</p></div>
+      <span class="tag">${s.tag}</span>
+    </a>`).join("")}</div>`;
+}
+
+function chantCards(){
+  return `<div class="chants">${CHANTS.map(c=>`
+    <a class="chant" href="${c.u}" target="_blank" rel="noopener">
+      <span class="om" aria-hidden="true">ఓం</span>
+      <h3>${c.t}</h3><p>${c.d}</p><span class="go">Listen on YouTube ↗</span>
+    </a>`).join("")}</div>`;
+}
+
+const ABOUT = `<div class="about">
+  <div class="about-l"><blockquote>Born and raised in a small village on the coast of southern Andhra Pradesh. At 43 I realised how deeply I belong to these chants and this village.</blockquote>
+  <figure class="ph"><img src="${U("v/t/boat-2.jpg")}" alt="Sivaramakrishna on a fishing boat at the shore" loading="lazy"><figcaption>At the sea, a mile from the village</figcaption></figure></div>
+  <div>
+    <p>I am Sivaramakrishna Perubotla. I grew up in Chakicherla, a mile from the sea, where my grandfather, a purohit, filled our house with mantras every Saturday. I picked up the chants by listening, and they have stayed with me through a working life that took me from a polytechnic in Hyderabad to cities across the world.</p>
+    <p>This site gathers the stories I write about the people who carried me, the Vedic suktams I am learning, and the village life I love. Most stories were first written in Telugu on my blog <em>Namassumanjali</em>, which means a garland of salutations. Here they are in English, so friends and family abroad can read them too.</p>
+    <p><a href="${YT}">Gramavasi on YouTube</a> · <a href="https://namassumaanjali.blogspot.com">Namassumanjali on Blogger</a></p>
+    <div class="village">
+      <p class="eyebrow">The village</p>
+      <h3>${PLACE.name} <span lang="te">${PLACE.te}</span></h3>
+      <address>${PLACE.lines.join("<br>")}</address>
+      <p>On the Bay of Bengal coast, between Kavali and Ongole, a mile from the sea through the cashew groves.</p>
+      <a class="btn" href="${PLACE.map}" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+    </div>
+  </div>
+</div>`;
+
+const quoteText = q => `<p class="qt"${q.te?' lang="te"':q.sa?' lang="sa"':''}>${esc(q.q)}</p>${q.tr?`<p class="qtr">${esc(q.tr)}</p>`:""}`;
+function quoteCard(q){
+  const st=STORIES.find(x=>x.slug===q.s);
+  return `<figure class="quote">${quoteText(q)}<figcaption>— ${esc(q.who)}${st?` · <a href="#${st.slug}">${esc(st.title)}</a>`:""}</figcaption></figure>`;
+}
+function quoteOfDay(){
+  const d=new Date(), n=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5);
+  return QUOTES[n%QUOTES.length];
+}
+
+function home(){
+  return `
+  <div class="hero"><div class="wrap">
+    <div>
+      <p class="eyebrow">Stories · Vedic chants · Village life</p>
+      <h1>A villager's notebook of <em>people, prayers</em> and the coast of Andhra.</h1>
+      <p class="lede">Stories of the teachers, elders and friends who carried me, the chants my grandfather gave me, and the quiet of the place I come from.</p>
+      <div class="cta"><a class="btn solid" href="#stories">Read the stories</a><a class="btn" href="#chants">Listen to the chants</a></div>
+    </div>
+    <div class="art"><canvas class="kolam" id="kolam" aria-label="A muggu pattern of dots and loops"></canvas><p class="kolam-cap">Muggu, drawn each dawn at the doorstep</p></div>
+  </div></div>
+  <section class="band"><div class="wrap">
+    <div class="band-head"><div><h2 class="sec">Chakicherla</h2><p class="sec-sub" style="margin:0">Fog on the fields, the sea a mile away, a fresh muggu at every door.</p></div><a class="btn" href="#village">See the village</a></div>
+    <div class="mosaic">
+      ${[["golden-paddy","paddy"],["boat-2","sea"],["house-muggu","home"],["road-mist","mornings"],["haridasu-1","sankranti"]].map(([f,g],i)=>`<a href="#village" data-jump="${g}" class="m${i}"><img src="${U(`v/t/${f}.jpg`)}" alt="${esc(findCap(f))}" loading="lazy"></a>`).join("")}
+    </div>
+  </div></section>
+  <section><div class="wrap">
+    <h2 class="sec">Latest stories</h2>
+    <p class="sec-sub">Translated from Telugu, or written in English to begin with.</p>
+    ${rows(sorted.slice(0,4))}
+    <p style="margin-top:1.4rem"><a class="btn" href="#stories">All ${STORIES.length} stories</a></p>
+  </div></section>
+  <section class="qday"><div class="wrap">
+    <p class="eyebrow">Today's thought</p>
+    ${quoteCard(quoteOfDay())}
+    <p><a href="#quotes">More quotes →</a></p>
+  </div></section>
+  <section style="background:var(--paper-2)"><div class="wrap">
+    <h2 class="sec">Chants</h2>
+    <p class="sec-sub">Suktams and blessings I am practising, recorded at home.</p>
+    <a class="feature" href="#chants">
+      <span class="om" aria-hidden="true">ॐ</span>
+      <span><b>Narayana Suktham</b><span>Listen with the words in Devanagari, Telugu, Kannada or English as I chant, over a soft background drone.</span></span>
+      <span class="go">Open the player →</span>
+    </a>
+    ${chantCards()}
+  </div></section>
+  <section><div class="wrap">${ABOUT}</div></section>`;
+}
+
+/* ---------- Village gallery ---------- */
+const ALLPH = GALLERY.flatMap(g=>g.p.map(p=>({f:p[0],c:p[1],g:g.id})));
+function findCap(f){const p=ALLPH.find(x=>x.f===f);return p?p.c:""}
+function villagePage(){
+  return `<section class="v-intro"><div class="wrap">
+    <p class="eyebrow">Photographs</p>
+    <h2 class="sec">Chakicherla <span class="te" lang="te">${PLACE.te}</span></h2>
+    <p class="sec-sub">The village where I was born, on the coast of Prakasam district. Tap any photo to see it large.</p>
+    <nav class="v-toc" aria-label="Photo sections">${GALLERY.map(g=>`<a href="#village" data-jump="${g.id}">${g.t}</a>`).join("")}</nav>
+  </div></section>
+  ${GALLERY.map((g,gi)=>`<section class="v-sec${gi%2?" alt":""}" id="g-${g.id}"><div class="wrap">
+    <div class="v-head"><h3>${g.t}<span lang="te">${g.te}</span></h3><p>${g.d}</p></div>
+    <div class="grid">${g.p.map(p=>`<button type="button" class="tile${p[2]==="w"?" wide":p[2]==="t"?" tall":p[2]==="b"?" big":""}" data-ph="${p[0]}"><img src="${U(`v/t/${p[0]}.jpg`)}" alt="${esc(p[1])}" loading="lazy"${p[3]?` style="object-position:${p[3]}"`:""}><span>${esc(p[1])}</span></button>`).join("")}</div>
+  </div></section>`).join("")}
+  <section><div class="wrap village" style="margin:0">
+    <p class="eyebrow">Find it</p>
+    <h3>${PLACE.name} <span lang="te">${PLACE.te}</span></h3>
+    <address>${PLACE.lines.join("<br>")}</address>
+    <a class="btn" href="${PLACE.map}" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+  </div></section>`;
+}
+/* lightbox */
+const lb=document.createElement("div");lb.className="lb";lb.hidden=true;lb.setAttribute("role","dialog");lb.setAttribute("aria-modal","true");lb.setAttribute("aria-label","Photo viewer");
+lb.innerHTML=`<button type="button" class="lb-x" aria-label="Close">✕</button><button type="button" class="lb-p" aria-label="Previous photo">‹</button><figure><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><figcaption></figcaption></figure><button type="button" class="lb-n" aria-label="Next photo">›</button>`;
+document.body.appendChild(lb);
+let lbi=0;
+function lbShow(i){lbi=(i+ALLPH.length)%ALLPH.length;const p=ALLPH[lbi];const im=lb.querySelector("img");im.onerror=()=>{im.onerror=null;im.src=U(`v/t/${p.f}.jpg`)};im.src=window.EMB?U(`v/t/${p.f}.jpg`):`v/l/${p.f}.jpg`;im.alt=p.c;lb.querySelector("figcaption").textContent=`${p.c} · ${lbi+1} of ${ALLPH.length}`;lb.hidden=false;document.body.style.overflow="hidden";lb.querySelector(".lb-x").focus()}
+function lbClose(){lb.hidden=true;document.body.style.overflow=""}
+lb.addEventListener("click",e=>{if(e.target.closest(".lb-x")||e.target===lb)lbClose();else if(e.target.closest(".lb-p"))lbShow(lbi-1);else if(e.target.closest(".lb-n"))lbShow(lbi+1)});
+addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")lbClose();if(e.key==="ArrowLeft")lbShow(lbi-1);if(e.key==="ArrowRight")lbShow(lbi+1)});
+let tx=0;lb.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});lb.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)lbShow(lbi+(d<0?1:-1))});
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-ph]");if(t){lbShow(ALLPH.findIndex(p=>p.f===t.dataset.ph));return}
+  const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const go=()=>{const el=document.getElementById("g-"+j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth"})};if(location.hash!=="#village"){location.hash="village";setTimeout(go,60)}else go()}
+});
+
+/* ---------- Chant player ---------- */
+const SCRIPTS=[["te","తెలుగు"],["dev","देवनागरी"],["kn","ಕನ್ನಡ"],["en","English"]];
+const SI={dev:0,te:1,kn:2,en:3};
+let pref={script:"te",mvol:.6};
+try{Object.assign(pref,JSON.parse(localStorage.getItem("gv-player")||"{}"))}catch(e){}
+const savePref=()=>{try{localStorage.setItem("gv-player",JSON.stringify(pref))}catch(e){}};
+
+function playerHTML(){
+  return `<div class="player" id="player">
+    <div class="pl-head">
+      <div><p class="eyebrow">Chant · Taittiriya Aranyaka</p><h2 class="sec">Narayana Suktham</h2>
+      <p class="sec-sub" style="margin:0">My recording, with the words following along. Pick the script you read most easily.</p></div>
+      <div class="scripts" role="group" aria-label="Lyrics script">${SCRIPTS.map(([k,l])=>`<button type="button" data-s="${k}" aria-pressed="${pref.script===k}" lang="${k==='dev'?'sa':k}">${l}</button>`).join("")}</div>
+    </div>
+    <div class="pl-body">
+      <div class="now">
+        <p class="meaning" id="meaning">Press play to begin.</p>
+        <p class="cur" id="cur" lang="sa">ॐ</p>
+      </div>
+      <ol class="lines" id="lines" aria-label="All lines"></ol>
+    </div>
+    <div class="pl-ctrl">
+      <button type="button" class="playbtn" id="pbtn" aria-label="Play">▶</button>
+      <span class="time" id="tcur">0:00</span>
+      <input type="range" id="seek" min="0" max="162" step=".1" value="0" aria-label="Position in the chant">
+      <span class="time" id="tdur">2:42</span>
+      <label class="vol"><span>Background music</span><input type="range" id="mvol" min="0" max="1" step=".01" value="${pref.mvol}"></label>
+    </div>
+    <p class="pl-status" id="pstat" aria-live="polite">Loading the recording…</p>
+  </div>`;
+}
+
+let PA=null, PM=null, praf=0;
+async function loadAudio(url){try{const r=await fetch(url);if(!r.ok)throw 0;return URL.createObjectURL(await r.blob())}catch(e){if(window.EMB&&EMB[url])return URL.createObjectURL(await (await fetch(EMB[url])).blob());throw new Error(url)}}
+async function initPlayer(){
+  const $=id=>document.getElementById(id);
+  if(!NS){try{NS=window.EMB&&EMB["narayana.json"]?JSON.parse(EMB["narayana.json"]):await (await fetch("narayana.json")).json()}catch(e){$("pstat").textContent="The lyrics could not load. Refresh the page to try again.";return}}
+  const lines=$("lines"), cur=$("cur"), meaning=$("meaning"), seek=$("seek");
+  const drawList=()=>{const i=SI[pref.script];lines.innerHTML=NS.LYR.map((l,k)=>`<li data-k="${k}" lang="${pref.script==='dev'?'sa':pref.script}">${esc(l[i])}</li>`).join("");};
+  drawList();
+  if(!PA){PA=new Audio();PM=new Audio();PM.loop=false;
+    try{const [a,m]=await Promise.all([loadAudio("chant.mp3"),loadAudio("drone.mp3")]);PA.src=a;PM.src=m;}
+    catch(e){$("pstat").textContent="The recording could not load. Refresh the page to try again.";return}}
+  PM.volume=pref.mvol;
+  $("pstat").textContent="Ready. The background music plays under the chant; move the slider to change its level.";
+  let last=-2;
+  const fmtT=s=>Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+  const idxAt=t=>{let k=-1;for(let i=0;i<NS.DLS.length;i++){if(NS.DLS[i]<=t)k=i;else break}return k};
+  const secAt=k=>{let s=0;NS.SC.forEach((st,i)=>{if(k>=st)s=i});return s};
+  function show(k){
+    if(k===last)return;last=k;
+    lines.querySelectorAll("li").forEach(li=>li.classList.toggle("on",+li.dataset.k===k));
+    const i=SI[pref.script];
+    if(k<0){cur.textContent=NS.LYR[0][i];meaning.textContent="Press play to begin.";return}
+    cur.textContent=NS.LYR[k][i];cur.lang=pref.script==='dev'?'sa':pref.script;
+    const c=NS.CAPS[secAt(k)];meaning.textContent=pref.script==="te"?c[4]:pref.script==="kn"?c[5]:c[3];
+    const li=lines.querySelector(`li[data-k="${k}"]`);
+    if(li){const top=li.offsetTop-lines.clientHeight/2+li.clientHeight/2;lines.scrollTo({top,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches)cur.animate([{opacity:.2,transform:"translateY(6px)"},{opacity:1,transform:"none"}],{duration:450,easing:"ease-out"});
+  }
+  function tick(){
+    if(!seek.isConnected)return;
+    const t=PA.currentTime;seek.value=t;$("tcur").textContent=fmtT(t);
+    if(!PA.paused&&Math.abs(PM.currentTime-t)>.3)PM.currentTime=t;
+    show(idxAt(t));
+    if(!PA.paused)praf=requestAnimationFrame(tick);
+  }
+  const btn=$("pbtn");
+  const setBtn=()=>{btn.textContent=PA.paused?"▶":"❚❚";btn.setAttribute("aria-label",PA.paused?"Play":"Pause")};
+  btn.onclick=async()=>{
+    if(PA.paused){stopAmbient();try{PM.currentTime=PA.currentTime;await Promise.all([PA.play(),PM.play()])}catch(e){$("pstat").textContent="Tap play again to start the sound."}cancelAnimationFrame(praf);tick()}
+    else{PA.pause();PM.pause()}
+    setBtn();
+  };
+  PA.onended=()=>{PM.pause();setBtn();show(-1)};
+  seek.oninput=()=>{PA.currentTime=+seek.value;PM.currentTime=+seek.value;last=-2;tick()};
+  $("mvol").oninput=e=>{pref.mvol=+e.target.value;PM.volume=pref.mvol;savePref()};
+  lines.onclick=e=>{const li=e.target.closest("li");if(!li)return;const t=NS.DLS[+li.dataset.k];PA.currentTime=t;PM.currentTime=t;last=-2;tick()};
+  document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{pref.script=b.dataset.s;savePref();document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x===b));drawList();last=-2;show(idxAt(PA.currentTime))});
+  setBtn();seek.value=PA.currentTime;show(idxAt(PA.currentTime)>=0&&PA.currentTime>0?idxAt(PA.currentTime):-1);if(!PA.paused)tick();
+}
+
+/* ---------- Ambient music while reading ---------- */
+let AMB=null;
+function stopAmbient(){if(AMB&&!AMB.paused){AMB.pause();syncAmbBtn()}}
+function syncAmbBtn(){const b=document.getElementById("amb");if(!b)return;const on=AMB&&!AMB.paused;b.setAttribute("aria-pressed",on);b.querySelector("span").textContent=on?"Music on":"Music off"}
+document.getElementById("amb").onclick=async()=>{
+  const b=document.getElementById("amb");
+  if(!AMB){b.querySelector("span").textContent="Loading…";try{AMB=new Audio(await loadAudio("drone.mp3"));AMB.loop=true;AMB.volume=.35}catch(e){b.querySelector("span").textContent="Music off";return}}
+  if(AMB.paused){if(PA&&!PA.paused){PA.pause();PM.pause();const pb=document.getElementById("pbtn");if(pb){pb.textContent="▶";pb.setAttribute("aria-label","Play")}}try{await AMB.play()}catch(e){}}else AMB.pause();
+  syncAmbBtn();
+};
+
+let filter="All";
+function storiesPage(){
+  const tags=["All",...new Set(STORIES.map(s=>s.tag))];
+  const items=filter==="All"?sorted:sorted.filter(s=>s.tag===filter);
+  return `<section><div class="wrap">
+    <h2 class="sec">Stories</h2>
+    <p class="sec-sub">Each story links back to the original post on Blogger.</p>
+    <div class="filters" role="group" aria-label="Filter stories">${tags.map(t=>`<button type="button" data-f="${t}" aria-pressed="${t===filter}">${t}</button>`).join("")}</div>
+    ${rows(items)}
+  </div></section>`;
+}
+
+function reader(s){
+  const i=sorted.indexOf(s), newer=sorted[i-1], older=sorted[i+1];
+  return `<article class="wrap"><div class="reader">
+    <a class="back" href="#stories">← All stories</a>
+    <p class="eyebrow">${s.tag}</p>
+    <h1>${esc(s.title)}</h1>
+    ${s.te?`<p class="te-title" lang="te">${s.te}</p>`:""}
+    <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>Original: ${s.orig}</span><a href="${s.src}" target="_blank" rel="noopener">Read the original post ↗</a></div>
+    <div class="prose">${withPhotos(render(s.body), PHOTOS[s.slug])}</div>
+    <p class="endmark" aria-hidden="true">॥ ఓం ॥</p>
+    <nav class="nextprev" aria-label="More stories">
+      ${older?`<a href="#${older.slug}">Older<b>${esc(older.title)}</b></a>`:"<span></span>"}
+      ${newer?`<a href="#${newer.slug}">Newer<b>${esc(newer.title)}</b></a>`:"<span></span>"}
+    </nav>
+  </div></article>`;
+}
+
+function route(){
+  const h=(location.hash||"#home").slice(1);
+  const story=STORIES.find(s=>s.slug===h);
+  let nav=h;
+  if(story){app.innerHTML=reader(story);nav="stories";}
+  else if(h==="stories") app.innerHTML=storiesPage();
+  else if(h==="chants"){ app.innerHTML=`<section class="stage-sec"><div class="wrap">${playerHTML()}</div></section><section><div class="wrap"><h2 class="sec">More chants</h2><p class="sec-sub">I learned these by ear, at my grandfather's Saturday pujas and in the temple beside our house. These recordings are on YouTube.</p>${chantCards()}</div></section>`; initPlayer(); }
+  else if(h==="village") app.innerHTML=villagePage();
+  else if(h==="quotes") app.innerHTML=`<section><div class="wrap"><h2 class="sec">Quotes</h2><p class="sec-sub">Lines from these stories, and the verses they lean on. A new one opens the home page each day.</p><div class="quotes">${QUOTES.map(quoteCard).join("")}</div></div></section>`;
+  else if(h==="about") app.innerHTML=`<section><div class="wrap">${ABOUT}</div></section>`;
+  else {app.innerHTML=home();nav="home";drawKolam();}
+  document.querySelectorAll("[data-nav]").forEach(a=>{ if(a.dataset.nav===nav) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  if(!["home",""].includes(h)) window.scrollTo(0,0);
+}
+app.addEventListener("click",e=>{
+  const b=e.target.closest("[data-f]"); if(!b) return;
+  filter=b.dataset.f; app.innerHTML=storiesPage();
+});
+window.addEventListener("hashchange",route);
+
+function drawKolam(){
+  const c=document.getElementById("kolam"); if(!c) return;
+  const css=getComputedStyle(document.documentElement);
+  const ink=css.getPropertyValue("--ink").trim(), tur=css.getPropertyValue("--turmeric").trim(), kum=css.getPropertyValue("--kumkum").trim();
+  const size=c.clientWidth||320, dpr=window.devicePixelRatio||1;
+  c.width=size*dpr;c.height=size*dpr;
+  const x=c.getContext("2d"); x.scale(dpr,dpr);
+  const n=5, pad=size*0.14, s=(size-2*pad)/(n-1);
+  const pts=[];
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){ if(Math.abs(i-2)+Math.abs(j-2)<=2) pts.push([pad+i*s,pad+j*s,Math.abs(i-2)+Math.abs(j-2)]); }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let t0=null;
+  function frame(ts){
+    t0??=ts; const p=reduce?1:Math.min(1,(ts-t0)/1800);
+    x.clearRect(0,0,size,size);
+    x.lineWidth=Math.max(1.6,size/160); x.lineCap="round";
+    pts.forEach(([px,py,d],k)=>{
+      const r=s*0.5;
+      x.save(); x.translate(px,py); x.rotate(Math.PI/4);
+      x.beginPath(); x.roundRect(-r/1.414*1.0,-r/1.414*1.0,r*1.414,r*1.414,r*0.38);
+      x.strokeStyle=d===0?kum:(d===1?tur:ink);
+      const len=r*1.414*4; x.setLineDash([len,len]); x.lineDashOffset=len*(1-Math.min(1,Math.max(0,p*1.6-k*0.04)));
+      x.stroke(); x.restore();
+    });
+    x.setLineDash([]);
+    pts.forEach(([px,py])=>{x.beginPath();x.arc(px,py,size/90,0,7);x.fillStyle=ink;x.fill();});
+    // outer petals
+    [[size/2,pad-s*0.55],[size/2,size-pad+s*0.55],[pad-s*0.55,size/2],[size-pad+s*0.55,size/2]].forEach(([px,py])=>{
+      x.beginPath();x.arc(px,py,size/90,0,7);x.fillStyle=kum;x.globalAlpha=p;x.fill();x.globalAlpha=1;});
+    if(p<1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+try{ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>drawKolam()); }catch(e){}
+route();
+</script>
+
+</body>
+</html>
