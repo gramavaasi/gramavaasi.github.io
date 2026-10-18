@@ -211,8 +211,17 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:2rem;margin:0 0 .35r
 .talk h2{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:0}
 .talk-intro{margin:0;color:var(--ink-soft)}
 .talk-note{margin:0;font-family:var(--ui);font-size:.82rem;color:var(--ink-soft)}
-#cusdis_thread{min-height:12rem}
-#cusdis_thread iframe{width:100%;border:0}
+.talk-list{display:flex;flex-direction:column;gap:.8rem}
+.cmt{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.9rem 1rem}
+.cmt-msg{margin:0 0 .4rem}
+.cmt-by{margin:0;font-family:var(--ui);font-size:.8rem;color:var(--ink-soft)}
+.talk-form{display:flex;flex-direction:column;gap:.45rem;margin-top:.4rem}
+.talk-form label{font-family:var(--ui);font-size:.82rem;font-weight:600}
+.talk-form input,.talk-form textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.6rem .7rem;width:100%;max-width:100%}
+.talk-form input:focus,.talk-form textarea:focus{outline:2px solid var(--turmeric);outline-offset:1px}
+.talk-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.3rem}
+.talk-status{font-family:var(--ui);font-size:.88rem;color:var(--ink-soft)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .gb-band{background:var(--ink);color:var(--paper)}
 .gb-band .wrap{display:flex;justify-content:space-between;align-items:center;gap:1.2rem;flex-wrap:wrap}
 .gb-band .sec-sub,.gb-band .eyebrow{color:color-mix(in srgb,var(--paper) 75%,transparent)}
@@ -526,9 +535,13 @@ const GALLERY = [
     ["haridasu-1","The Haridasu, singing door to door in Dhanurmasam","t"],["haridasu-2","The Haridasu on his rounds","t"],["bhogi-fire","Bhogi fire before dawn","t"],["bhogi-street","Bhogi fires down the street","t"],["bullock-cart","Bullock cart on the village road","t"],["cattle-dusk","Cattle coming home at dusk","t"],["puja-drawing","A ritual drawing in red and white","b"]]}
 ];
 
-/* Comments: Cusdis (cusdis.com). Paste the App ID from the Cusdis dashboard here. */
-const CUSDIS_APP_ID = "";
-const SITE_URL = "https://gramavaasi.github.io/";
+/* Comments: Google Form (submit) + published "Approved" sheet tab (display).
+   Fill these from the form's pre-filled link and the sheet's Publish-to-web CSV link. */
+const GB = {
+  form: "https://docs.google.com/forms/d/e/1FAIpQLSfSnQqVD-IfPZpg2TnGo8K6sty0wlhjENnBejPUfNZmWkhIYA/formResponse",
+  name: "entry.354558290", msg: "entry.809779688", page: "entry.1033588012",
+  csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQpC4wNrc8uC8PX9cm5crNtGCWsvvtucT0mVEjKkyULROhwZdfnocxJ1RCXs8CuQJHAkgzAJx7dtzPR/pub?gid=288915939&single=true&output=csv"
+};
 
 /* Chakicherla */
 const PLACE = {name:"Chakicherla", te:"చాకిచర్ల", lines:["Chakicherla village, Ulavapadu Mandal","Prakasam District, Andhra Pradesh 523292","India"], map:"https://www.google.com/maps/search/?api=1&query=Chakicherla%2C+Ulavapadu%2C+Prakasam%2C+Andhra+Pradesh+523292"};
@@ -695,24 +708,45 @@ document.addEventListener("click",e=>{
 });
 
 /* ---------- Comments ---------- */
+const gbReady = () => GB.form && GB.name && GB.msg;
 function commentsBlock(pageId, title, heading, intro){
-  const live = CUSDIS_APP_ID && location.protocol.startsWith("http") && !/claude|claudeusercontent/.test(location.host);
-  return `<section class="talk" id="talk" aria-labelledby="talk-h">
+  return `<section class="talk" id="talk" aria-labelledby="talk-h" data-page="${pageId}">
     <h2 id="talk-h">${heading}</h2>
     <p class="talk-intro">${intro}</p>
-    ${live?`<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="${CUSDIS_APP_ID}" data-page-id="${pageId}" data-page-url="${SITE_URL}#${pageId}" data-page-title="${esc(title)}" data-theme="auto" data-lang="en"></div>
-    <p class="talk-note">No account needed. Comments appear after Siva reads them, usually within a day.</p>`
-    :`<p class="talk-note">${CUSDIS_APP_ID?"Comments open on the live site, gramavaasi.github.io.":"Comments are opening very soon."}</p>`}
+    <div class="talk-list" aria-live="polite"></div>
+    ${gbReady()?`<form class="talk-form" novalidate>
+      <label for="c-name">Your name</label>
+      <input id="c-name" name="name" required maxlength="80" autocomplete="name" placeholder="e.g. Tulasi, Ongole">
+      <label for="c-msg">Your message</label>
+      <textarea id="c-msg" name="msg" required maxlength="2000" rows="4" placeholder="Telugu or English, either is welcome"></textarea>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="talk-row"><button type="submit" class="btn solid">Send</button><span class="talk-status" role="status"></span></div>
+      <p class="talk-note">No account needed. Messages appear here after Siva reads them.</p>
+    </form>`:`<p class="talk-note">Comments are opening very soon.</p>`}
   </section>`;
 }
-let cusdisLoading=false;
-function mountComments(){
-  if(!document.getElementById("cusdis_thread"))return;
-  if(window.CUSDIS&&window.CUSDIS.initial){window.CUSDIS.initial();return}
-  if(cusdisLoading)return;cusdisLoading=true;
-  const sc=document.createElement("script");sc.src="https://cusdis.com/js/cusdis.es.js";sc.async=true;sc.defer=true;
-  sc.onload=()=>{cusdisLoading=false;if(window.CUSDIS&&window.CUSDIS.initial)window.CUSDIS.initial()};
-  document.head.appendChild(sc);
+function parseCSV(t){const rows=[];let r=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===','){r.push(f);f=""}else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);rows.push(r);r=[];f=""}else f+=c}if(f||r.length){r.push(f);rows.push(r)}return rows}
+let gbCache=null;
+async function gbLoad(){if(gbCache)return gbCache;if(!GB.csv)return [];try{const t=await (await fetch(GB.csv+(GB.csv.includes("?")?"&":"?")+"t="+Date.now())).text();gbCache=parseCSV(t).slice(1).filter(r=>r[1]&&r[2]).map(r=>({when:r[0],name:r[1],msg:r[2],page:(r[3]||"").trim()}));}catch(e){gbCache=[]}return gbCache}
+const gbDate=w=>{const d=new Date(w);return isNaN(d)?w.split(" ")[0]:d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"})};
+async function mountComments(){
+  const box=document.querySelector(".talk");if(!box)return;
+  const pageId=box.dataset.page, list=box.querySelector(".talk-list");
+  const all=await gbLoad(); if(!box.isConnected)return;
+  const mine=all.filter(c=>c.page===pageId||(pageId==="guestbook"&&!c.page)).reverse();
+  list.innerHTML=mine.length?mine.map(c=>`<article class="cmt"><p class="cmt-msg">${esc(c.msg).replace(/\n/g,"<br>")}</p><p class="cmt-by">${esc(c.name)} · ${esc(gbDate(c.when))}</p></article>`).join(""):(GB.csv?`<p class="talk-note">No messages yet. Be the first.</p>`:"");
+  const form=box.querySelector(".talk-form");if(!form)return;
+  form.onsubmit=async e=>{
+    e.preventDefault();const st=form.querySelector(".talk-status"),btn=form.querySelector("button");
+    const name=form.name.value.trim(),msg=form.msg.value.trim();
+    if(form.website.value){st.textContent="Thank you.";return}
+    if(!name||!msg){st.textContent="Please add your name and a message.";(name?form.msg:form.name).focus();return}
+    btn.disabled=true;st.textContent="Sending…";
+    const fd=new FormData();fd.append(GB.name,name);fd.append(GB.msg,msg);if(GB.page)fd.append(GB.page,pageId);
+    try{await fetch(GB.form,{method:"POST",mode:"no-cors",body:fd});form.reset();st.textContent="Thank you! Your message will appear here after Siva reads it.";}
+    catch(err){st.textContent="That didn't send. Check your internet connection and try again."}
+    btn.disabled=false;
+  };
 }
 
 /* ---------- Chant player ---------- */
