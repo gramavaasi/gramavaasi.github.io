@@ -6,9 +6,12 @@
 <meta name="description" content="Stories, Vedic chants and village life from coastal Andhra Pradesh, by Sivaramakrishna Perubotla (Gramavasi).">
 <meta property="og:title" content="Gramavasi">
 <meta property="og:description" content="Stories of the people who carried me, the chants my grandfather gave me, and the village I come from.">
-<meta property="og:image" content="img/guru-3.jpg">
+<meta property="og:image" content="https://gramavaasi.github.io/v/l/golden-paddy.jpg">
+<meta property="og:url" content="https://gramavaasi.github.io/">
+<meta name="twitter:card" content="summary_large_image">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Gramavasi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316302D'/%3E%3Cg fill='none' stroke='%23E3A93A' stroke-width='3'%3E%3Crect x='20' y='20' width='24' height='24' rx='7' transform='rotate(45 32 32)'/%3E%3C/g%3E%3Cg fill='%23F2F4EE'%3E%3Ccircle cx='32' cy='32' r='3.2'/%3E%3Ccircle cx='32' cy='14' r='2.6'/%3E%3Ccircle cx='32' cy='50' r='2.6'/%3E%3Ccircle cx='14' cy='32' r='2.6'/%3E%3Ccircle cx='50' cy='32' r='2.6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Telugu:ital@0;1&family=Tiro+Devanagari+Sanskrit&family=Noto+Serif+Kannada&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
@@ -228,6 +231,43 @@ h2.sec{font-family:var(--display);font-weight:400;font-size:2rem;margin:0 0 .35r
 .gb-band .eyebrow{color:var(--turmeric)}
 .gb-band .btn.solid{background:var(--kumkum);border-color:var(--kumkum);color:#fff}
 .nav-gb{color:var(--kumkum)!important;font-weight:600!important}
+/* channels */
+.chan{background:var(--paper)}
+.chan-head{margin-bottom:1.4rem}
+.chan-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.2rem}
+.chan-card{border:1px solid var(--rule);border-radius:6px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;align-items:flex-start;min-width:0}
+.chan-card.yt{background:var(--paper-2)}
+.chan-card h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:0}
+.chan-card p{margin:0;color:var(--ink-soft)}
+.chan-kicker{font-family:var(--ui);font-size:.72rem!important;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--kumkum)!important}
+.blog-link{display:flex;flex-direction:column;gap:.3rem;text-decoration:none;padding:.9rem 0;border-top:1px solid var(--rule);width:100%}
+.blog-link b{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.blog-link b span{font-family:var(--te);color:var(--turmeric);font-size:.95rem;margin-left:.3rem}
+.blog-link>span{color:var(--ink-soft);font-size:.95rem}
+.blog-link em{font-family:var(--ui);font-style:normal;font-size:.8rem;color:var(--kumkum);font-weight:600}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem;width:100%}
+.vids.small{grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.vid{display:flex;flex-direction:column;gap:.5rem;text-decoration:none;min-width:0}
+.vthumb{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:4px;overflow:hidden;background:linear-gradient(135deg,var(--ink),color-mix(in srgb,var(--ink) 60%,var(--kumkum)))}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.vid:hover .vthumb img{transform:scale(1.05)}
+.vthumb i{position:absolute;inset:auto auto .5rem .5rem;font-style:normal;font-size:.75rem;color:#fff;background:rgba(160,38,44,.9);border-radius:999px;padding:.2rem .55rem}
+.vmeta{display:flex;flex-direction:column;gap:.15rem}
+.vmeta b{font-family:var(--body);font-weight:600;font-size:.95rem;line-height:1.3}
+.vids.small .vmeta b{font-size:.82rem}
+.vmeta span{font-family:var(--ui);font-size:.75rem;color:var(--ink-soft)}
+/* story extras */
+.langsw{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;margin:-.4rem 0 1.6rem;background:var(--paper-2)}
+.langsw button{font-family:var(--ui);font-size:.85rem;font-weight:500;border:0;background:transparent;color:var(--ink-soft);padding:.4rem .9rem;border-radius:999px;cursor:pointer}
+.langsw button[lang="te"]{font-family:var(--te),var(--ui)}
+.langsw button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.prose-te{font-family:var(--te);font-size:1.12rem;line-height:1.9}
+.prose-te p:first-of-type::first-letter{all:unset}
+.share{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin:2rem 0 0;font-family:var(--ui);font-size:.85rem;color:var(--ink-soft)}
+.share a,.share button{font:inherit;font-weight:600;text-decoration:none;border:1px solid var(--rule);background:var(--paper);color:var(--ink);padding:.4rem .9rem;border-radius:999px;cursor:pointer}
+.share .sh-wa{background:#1f7a4d;border-color:#1f7a4d;color:#fff}
+.row-end{display:flex;align-items:center;gap:.8rem}
+.row-th{width:4.5rem;height:3.2rem;object-fit:cover;border-radius:3px;display:block}
 /* quotes */
 .quote{margin:0;display:flex;flex-direction:column;gap:.6rem}
 .qt{font-family:var(--display);font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.35;margin:0;text-wrap:balance}
@@ -257,12 +297,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .about{grid-template-columns:1fr}
   .row{grid-template-columns:1fr;gap:.3rem}
   .row .tag{justify-self:start}
+  header.bar .wrap{flex-wrap:nowrap;flex-direction:column;align-items:stretch;gap:.35rem;padding-block:.55rem .4rem}
+  nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-.4rem;padding-bottom:.15rem;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  nav::-webkit-scrollbar{display:none}
+  nav a,.amb{flex:none}
   .pl-body{grid-template-columns:1fr}
   .now{min-height:13rem;padding:1.5rem 1.2rem}
   .lines{max-height:12rem}
   .feature{grid-template-columns:auto minmax(0,1fr)}
   .feature .go{grid-column:2}
   .pair{grid-template-columns:1fr}
+  .chan-grid{grid-template-columns:1fr}
+  .vids.small{grid-template-columns:1fr 1fr 1fr}
+  .row-end{justify-content:space-between;width:100%}
   .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:14rem 9rem 9rem}
   .mosaic .m0{grid-row:auto;grid-column:span 2}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:9rem;grid-auto-flow:dense}
@@ -537,11 +584,32 @@ const GALLERY = [
 
 /* Comments: Google Form (submit) + published "Approved" sheet tab (display).
    Fill these from the form's pre-filled link and the sheet's Publish-to-web CSV link. */
+const SITE_URL = "https://gramavaasi.github.io/";
 const GB = {
   form: "https://docs.google.com/forms/d/e/1FAIpQLSfSnQqVD-IfPZpg2TnGo8K6sty0wlhjENnBejPUfNZmWkhIYA/formResponse",
   name: "entry.354558290", msg: "entry.809779688", page: "entry.1033588012",
   csv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQpC4wNrc8uC8PX9cm5crNtGCWsvvtucT0mVEjKkyULROhwZdfnocxJ1RCXs8CuQJHAkgzAJx7dtzPR/pub?gid=288915939&single=true&output=csv"
 };
+
+/* YouTube channel: latest videos (from the channel feed, 19 Oct 2026) */
+const VIDEOS = [
+  ["XuMaM__PGoI","Narayana Suktham, with lyrics and meaning","2026-10-04",154],
+  ["QujH2ifqPtk","Apratiratham (అప్రతిరథం)","2026-01-31",64],
+  ["RvefXBDlDww","Aikamatya Sooktham, the unity hymn","2025-09-07",82],
+  ["yZgKDZSZgbg","Durga Sooktham","2024-10-12",85],
+  ["WK0aiDDipcc","Pitru Sooktam (పితృ సూక్తం)","2021-05-09",11460],
+  ["kjVXJ4sfGjc","Narayana Sooktham (నారాయణ సూక్తం)","2021-04-21",2463],
+  ["8jYKwjjNLz0","Swasti Sooktam (స్వస్తి సూక్తం)","2021-04-13",977],
+  ["HLYr-Lfql6w","Purusha Suktham","2021-01-14",51],
+  ["mf3GtnzMBtE","Aashirvachanam (ఆశీర్వాద మంత్రం)","2020-12-06",29422],
+  ["U3ktIsTQdpk","Gayathri Ghanapatham","2020-04-05",678],
+  ["IbMtRSnbte0","Shanthi Manthra","2020-04-04",1834],
+  ["BHZKHFUt1Xk","Preetham on meditation","2022-11-12",90]
+];
+const BLOGS = [
+  {name:"Namassumanjali", te:"నమస్సుమాంజలి", url:"https://namassumaanjali.blogspot.com", since:"2020", d:"My main blog, mostly in Telugu: tributes to the teachers, elders and friends who shaped me, and writing on Kashi and the chants. Every story on this site began here."},
+  {name:"Balu Garu", te:"బాలు గారు", url:"https://graamavaasi.blogspot.com", since:"2025", d:"A small blog with my farewell poem to S. P. Balasubrahmanyam, whose songs walked with every Telugu home."}
+];
 
 /* Private visitor counter: page views go to Siva's "Gramavasi Visitors" sheet, never shown on the site.
    Open the site once with ?notrack to stop counting your own visits in that browser. */
@@ -588,10 +656,10 @@ function withPhotos(blocks, photos){
 
 function rows(items){
   return `<div class="index">${items.map(s=>`
-    <a class="row" href="#${s.slug}">
+    <a class="row${PHOTOS[s.slug]?" has-th":""}" href="#${s.slug}">
       <time datetime="${s.date}">${fmt(s.date)}</time>
       <div style="min-width:0"><h3>${esc(s.title)}${s.te?`<span class="te" lang="te">${s.te}</span>`:""}</h3><p>${esc(s.blurb)}</p></div>
-      <span class="tag">${s.tag}</span>
+      <span class="row-end">${PHOTOS[s.slug]?`<img class="row-th" src="${U(`img/${PHOTOS[s.slug][0].f}.jpg`)}" alt="" loading="lazy">`:""}<span class="tag">${s.tag}</span></span>
     </a>`).join("")}</div>`;
 }
 
@@ -668,6 +736,7 @@ function home(){
     </a>
     ${chantCards()}
   </div></section>
+  ${channelsBand()}
   <section class="gb-band"><div class="wrap">
     <div><p class="eyebrow">Guestbook</p><h2 class="sec">Write to me</h2><p class="sec-sub" style="margin:0">Share a memory, a correction or a blessing, in తెలుగు, हिन्दी, ಕನ್ನಡ or English. No account needed.</p></div>
     <a class="btn solid" href="#guestbook">💬 Leave a message</a>
@@ -710,6 +779,47 @@ document.addEventListener("click",e=>{
   const t=e.target.closest("[data-ph]");if(t){lbShow(ALLPH.findIndex(p=>p.f===t.dataset.ph));return}
   const j=e.target.closest("[data-jump]");if(j){e.preventDefault();const go=()=>{const el=document.getElementById("g-"+j.dataset.jump);if(el)el.scrollIntoView({behavior:"smooth"})};if(location.hash!=="#village"){location.hash="village";setTimeout(go,60)}else go()}
 });
+
+/* ---------- Channels ---------- */
+const nf=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,"")+"k":String(n);
+const totalViews=VIDEOS.reduce((a,v)=>a+v[3],0);
+function videoCard(v,big){
+  return `<a class="vid${big?" big":""}" href="https://youtu.be/${v[0]}" target="_blank" rel="noopener">
+    <span class="vthumb"><img src="https://i.ytimg.com/vi/${v[0]}/${big?"hqdefault":"mqdefault"}.jpg" alt="" loading="lazy" onerror="this.remove()"><i aria-hidden="true">▶</i></span>
+    <span class="vmeta"><b>${esc(v[1])}</b><span>${nf(v[3])} views · ${new Date(v[2]).getFullYear()}</span></span></a>`;
+}
+function channelsBand(){
+  const top=[...VIDEOS].sort((a,b)=>b[3]-a[3]).slice(0,3);
+  return `<section class="chan"><div class="wrap">
+    <div class="chan-head"><div><p class="eyebrow">Elsewhere</p><h2 class="sec">Watch and read</h2>
+      <p class="sec-sub" style="margin:0">The chants live on YouTube and the stories began on my blog. Both keep growing.</p></div></div>
+    <div class="chan-grid">
+      <div class="chan-card yt">
+        <p class="chan-kicker">YouTube · Gramavasi</p>
+        <h3>Vedic chants, recorded at home</h3>
+        <p>${VIDEOS.length}+ suktams and blessings, watched over ${nf(totalViews)} times. The most loved:</p>
+        <div class="vids small">${top.map(v=>videoCard(v)).join("")}</div>
+        <a class="btn solid" href="${YT}?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube ↗</a>
+      </div>
+      <div class="chan-card blog">
+        <p class="chan-kicker">Blogger</p>
+        <h3>The blogs</h3>
+        ${BLOGS.map(b=>`<a class="blog-link" href="${b.url}" target="_blank" rel="noopener"><b>${b.name} <span lang="te">${b.te}</span></b><span>${b.d}</span><em>Writing since ${b.since} · Open the blog ↗</em></a>`).join("")}
+      </div>
+    </div>
+  </div></section>`;
+}
+let ORIG=null;
+async function loadOrig(){if(ORIG)return ORIG;try{ORIG=window.EMB&&EMB["originals.json"]?JSON.parse(EMB["originals.json"]):await (await fetch("originals.json")).json()}catch(e){ORIG={}}return ORIG}
+function renderTe(txt){return txt.split(/\n\n+/).map(par=>`<p>${inline(par).replace(/\n/g,"<br>").replace(/(^|[^"=])(https?:\/\/[^\s<]+)/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>')}</p>`).join("")}
+async function mountOriginal(slug){
+  const sw=document.querySelector(".langsw");if(!sw)return;
+  const o=await loadOrig();if(!o[slug]){sw.hidden=true;return}
+  sw.hidden=false;const te=document.querySelector(".prose-te");te.innerHTML=renderTe(o[slug]);
+  sw.onclick=e=>{const b=e.target.closest("button");if(!b)return;const on=b.dataset.l==="te";
+    sw.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+    document.querySelector(".prose-en").hidden=on;te.hidden=!on;};
+}
 
 /* ---------- Visitor counter ---------- */
 const seenPages=new Set();
@@ -869,7 +979,7 @@ function storiesPage(){
   const items=filter==="All"?sorted:sorted.filter(s=>s.tag===filter);
   return `<section><div class="wrap">
     <h2 class="sec">Stories</h2>
-    <p class="sec-sub">Each story links back to the original post on Blogger.</p>
+    <p class="sec-sub">Read them in English, or switch to the original Telugu inside each story. Every story also links back to its post on the blog.</p>
     <div class="filters" role="group" aria-label="Filter stories">${tags.map(t=>`<button type="button" data-f="${t}" aria-pressed="${t===filter}">${t}</button>`).join("")}</div>
     ${rows(items)}
   </div></section>`;
@@ -882,8 +992,14 @@ function reader(s){
     <p class="eyebrow">${s.tag}</p>
     <h1>${esc(s.title)}</h1>
     ${s.te?`<p class="te-title" lang="te">${s.te}</p>`:""}
-    <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>Original: ${s.orig}</span><a href="${s.src}" target="_blank" rel="noopener">Read the original post ↗</a><a href="#talk" data-scroll="talk">💬 Leave a comment</a></div>
-    <div class="prose">${withPhotos(render(s.body), PHOTOS[s.slug])}</div>
+    <div class="meta"><time datetime="${s.date}">${fmt(s.date)}</time><span>${Math.max(2,Math.round(s.body.split(/\s+/).length/200))} min read</span><a href="${s.src}" target="_blank" rel="noopener">Original post on the blog ↗</a><a href="#talk" data-scroll="talk">💬 Leave a comment</a></div>
+    <div class="langsw" role="group" aria-label="Language" hidden><button type="button" data-l="en" aria-pressed="true">English</button><button type="button" data-l="te" aria-pressed="false" lang="te">తెలుగు మూలం · Original</button></div>
+    <div class="prose prose-en">${withPhotos(render(s.body), PHOTOS[s.slug])}</div>
+    <div class="prose prose-te" lang="te" hidden></div>
+    <div class="share"><span>Share this story</span>
+      <a class="sh-wa" href="https://wa.me/?text=${encodeURIComponent(s.title+" · Gramavasi\n"+SITE_URL+"#"+s.slug)}" target="_blank" rel="noopener">WhatsApp</a>
+      <button type="button" class="sh-copy" data-url="${SITE_URL}#${s.slug}">Copy link</button>
+    </div>
     <p class="endmark" aria-hidden="true">॥ ఓం ॥</p>
     ${commentsBlock(s.slug, s.title, "Your thoughts", "Did this bring back a memory, or do you know the people in it? Write a few words below, in Telugu, Hindi, Kannada or English.")}
     <nav class="nextprev" aria-label="More stories">
@@ -897,9 +1013,9 @@ function route(){
   const h=(location.hash||"#home").slice(1);
   const story=STORIES.find(s=>s.slug===h);
   let nav=h;
-  if(story){app.innerHTML=reader(story);nav="stories";}
+  if(story){app.innerHTML=reader(story);nav="stories";mountOriginal(story.slug);}
   else if(h==="stories") app.innerHTML=storiesPage();
-  else if(h==="chants"){ app.innerHTML=`<section class="stage-sec"><div class="wrap">${playerHTML()}</div></section><section><div class="wrap"><h2 class="sec">More chants</h2><p class="sec-sub">I learned these by ear, at my grandfather's Saturday pujas and in the temple beside our house. These recordings are on YouTube.</p>${chantCards()}</div></section>`; initPlayer(); }
+  else if(h==="chants"){ app.innerHTML=`<section class="stage-sec"><div class="wrap">${playerHTML()}</div></section><section><div class="wrap"><h2 class="sec">More chants on YouTube</h2><p class="sec-sub">I learned these by ear, at my grandfather's Saturday pujas and in the temple beside our house. Tap any one to watch.</p><div class="vids">${VIDEOS.map(v=>videoCard(v)).join("")}</div><p style="margin-top:1.4rem"><a class="btn solid" href="${YT}?sub_confirmation=1" target="_blank" rel="noopener">Subscribe to Gramavasi ↗</a></p></div></section>`; initPlayer(); }
   else if(h==="village") app.innerHTML=villagePage();
   else if(h==="quotes") app.innerHTML=`<section><div class="wrap"><h2 class="sec">Quotes</h2><p class="sec-sub">Lines from these stories, and the verses they lean on. A new one opens the home page each day.</p><div class="quotes">${QUOTES.map(quoteCard).join("")}</div></div></section>`;
   else if(h==="guestbook") app.innerHTML=`<section><div class="wrap"><div class="reader" style="padding-block:0">
@@ -914,6 +1030,7 @@ function route(){
   mountComments();
   countVisit(story?story.slug:(h||"home"));
 }
+document.addEventListener("click",async e=>{const c=e.target.closest(".sh-copy");if(!c)return;try{await navigator.clipboard.writeText(c.dataset.url);c.textContent="Link copied"}catch(err){c.textContent=c.dataset.url}});
 document.addEventListener("click",e=>{const a=e.target.closest("[data-scroll]");if(!a)return;e.preventDefault();const el=document.getElementById(a.dataset.scroll);if(el)el.scrollIntoView({behavior:"smooth"})});
 app.addEventListener("click",e=>{
   const b=e.target.closest("[data-f]"); if(!b) return;
